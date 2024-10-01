@@ -31,7 +31,7 @@ const Signup = ({ onToggle }) => {
                 </div>
             </div>
             <div className="submit-container">
-                <div className="submit" onClick={() => {/* Handle sign-up logic here */}}>
+                <div className="submit" onClick={() => {/* Sign-up logic */}}>
                     Sign Up
                 </div>
                 <div className="toggle-text">
@@ -43,9 +43,8 @@ const Signup = ({ onToggle }) => {
     );
 };
 
-// Define the prop types
 Signup.propTypes = {
-    onToggle: PropTypes.func.isRequired,  // Validate that onToggle is a function and required
+    onToggle: PropTypes.func.isRequired,  // Validate onToggle 
 };
 
 export default Signup;

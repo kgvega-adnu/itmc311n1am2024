@@ -3,7 +3,6 @@ import passwordIcon from '@assets/password.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-
 const Login = ({ onToggle }) => {
     return (
         <>
@@ -24,12 +23,12 @@ const Login = ({ onToggle }) => {
                 </div>
             </div>
             <div className="forgot-password-container">
-                <div className="forgot-password" onClick={() => {/* Handle forgot password logic */}}>
+                <div className="forgot-password" onClick={() => {/* Forgot password logic */}}>
                     Forgot Password?
                 </div>
             </div>
             <div className="submit-container">
-                <div className="submit" onClick={() => {/* Handle login logic here */}}>
+                <div className="submit" onClick={() => {/* Login logic */}}>
                     Login
                 </div>
                 <div className="toggle-text">
@@ -41,9 +40,8 @@ const Login = ({ onToggle }) => {
     );
 };
 
-// Define the prop types
 Login.propTypes = {
-    onToggle: PropTypes.func.isRequired,  // Validate that onToggle is a function and required
+    onToggle: PropTypes.func.isRequired,  // Validate onToggle
 };
 
 export default Login;
