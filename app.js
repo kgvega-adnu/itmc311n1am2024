@@ -1,5 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
+require('dotenv').config();
+
+
+
 const admin = require('firebase-admin');
 const { CollectionGroup } = require('firebase-admin/firestore');
 const e = require('express');
@@ -10,10 +14,13 @@ app.use(morgan('dev'));
 app.use(express.static('static'));
 app.use(express.json());
 
+const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
+
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
     // or use a service account key file: 
-    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-3ddd6b939a.json'))
+    credential: admin.credential.cert(serviceAccount)
   });
 
 
