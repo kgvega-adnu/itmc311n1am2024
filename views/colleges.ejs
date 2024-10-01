@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <section id="main">
+      <%- include('./partials/sidebar.ejs') %>
+          <section id="main-content">
+
+        <% deptName.forEach(e => { %>
+            <% if(e.data().departmentId == deptID){   %>
+              <h2  id="galleryTitle"><%= e.data().departmentName%></h2>
+          <% }})%>
+
+          <div class="gallery">
+
+            <% collegeData.forEach(e => { infoData = e.data()%>
+              <a href="/departments/<%= deptID %>/<%=infoData.collegeID%> "  >
+
+                <div class="gallery-item">
+                    <h2 style="color: white;" id="dept"><%= infoData.collegeTitle %></h2>
+                </div>
+              </a>
+
+          <%   } )       %>
+
+            </div>
+
+          </section>
+    </section>
+
+    <%- include('./partials/footer.ejs') %>
+
+    <script type="module" src="/firebase.js"></script>    
+</body>
+</html>

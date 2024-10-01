@@ -1,0 +1,4 @@
+# Ignore credentials and environment files
+serviceAccountKey.json
+.env
+node_modules

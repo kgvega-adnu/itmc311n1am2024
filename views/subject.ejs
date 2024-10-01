@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+<section id="main-temp">
+    <%- include('./partials/sidebar.ejs') %>
+
+<section id="main-content">
+    <div id="subjectBox" style="display: flex; padding: 50px; justify-content:space-between;">
+     <div id="subjectData">
+                <h2 ><%= subject.subjectCode %></h2>
+                <h3><%= subject.subjectTitle %></h3>
+          
+     </div>
+        <div>
+            <div id="rate-box" ">Rate This Subject</div>
+        </div>
+    
+    </div>
+     <!-- Modal -->
+     <form id="ratingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="closeIn" style="cursor: pointer;display: flex;justify-content: space-between;">
+                    <h1 style="text-align: center;">Rate this Subject</h1>
+            </div>
+         
+
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+            </div>
+
+            <h2 id="emoticons"></h2>
+
+            <h3 style="text-align: left;">Review</h3>
+            <textarea minlength="10" maxlength="1000"  name="reviewTXT" id="reviewTXT" required></textarea>
+            <p>Characters: <span id="charCount">0</span>/1000</p>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <div style="display: flex; justify-content: space-between;margin-right: 100px;">
+        <div id="reviewCount">
+            <h2><%= reviews.size %> Reviews</h2>
+        </div>
+        <div>
+            <% let sum = 0 %>
+            <% reviews.forEach(e => {  const reviewData = e.data()%> 
+                    <%  sum += reviewData.rating; %>
+            
+                <%  }) %>
+
+                <% let avg = sum / reviews.size; %>
+                <h2 id="avgRating"><%= avg.toFixed(1) %></h2> <!-- Displays avg with 2 decimal places -->
+                <% avg = parseInt(sum /  reviews.size); %>
+                <h3 id="avgTitle">Overall Rating</h3>
+                <% if(avg == 1){ %>
+                    <div class="avgStars" >
+                        <h1 style="color: gold;">★</h1><h1>★★★★</h1>
+                    </div>
+                <% } else if(avg == 2){ %>
+                    <div class="avgStars">
+                        <h1 style="color: gold;">★★</h1><h1>★★★</h1>
+                    </div>
+                <% } else if(avg == 3){ %>
+                    <div class="avgStars">
+                        <h1 style="color: gold;">★★★</h1><h1>★★</h1>
+                    </div>
+                <% } else if(avg == 4){ %>
+                    <div class="avgStars">
+                        <h1 style="color: gold;">★★★★</h1><h1>★</h1>
+                    </div>
+                <% } else { %>
+                    <div class="avgStars">
+                        <h1 style="color: gold;">★★★★★</h1>
+                    </div>
+                <% } %>
+                
+                
+                
+        </div>
+    </div>
+    
+    <div id="temp">
+    <% if(reviews.empty) { %>
+        <h5 style="margin: 0px 60px; font-size: 15px;">There are no reviews to show</h5> 
+   <% }%>
+    <% reviews.forEach(e => {  const reviewData = e.data()%> 
+    <div id="reviews">
+        <div id="reviewBox1">
+                <div id="reviewUSN">
+                    <h2><%= reviewData.username %></h2>
+                </div>
+                <div>
+                    <h3><%= reviewData.rating %>.0 
+                        <% if (reviewData.rating == 1) { %>
+                            star
+                        <% } else { %>
+                            stars
+                        <% } %>
+                    </h3>
+                    
+                </div>
+         
+            <div>
+                <% if(reviewData.rating == 1){ %>
+                    <div class="reviewStars" >
+                        <h1 style="color: gold;">★</h1><h1>★★★★</h1> 
+                    </div>
+               <% }else if(reviewData.rating == 2){ %>
+                    <div class="reviewStars" >
+                        <h1 style="color: gold;">★★</h1><h1>★★★</h1> 
+                    </div>
+               <% }else if(reviewData.rating == 3){ %>
+                    <div class="reviewStars" >
+                        <h1 style="color: gold;">★★★</h1><h1>★★</h1> 
+                    </div>
+               <% }else if(reviewData.rating == 4){ %>
+                <div class="reviewStars" >
+                    <h1 style="color: gold;">★★★★</h1><h1>★</h1> 
+                </div>
+                <% }else{ %>
+                    <div class="reviewStars" >
+                        <h1 style="color: gold;">★★★★★</h1>
+                    </div>
+                <% } %>
+              
+            </div>
+
+        </div>
+
+        <div id="reviewBox2">
+            <p><%= reviewData.comment %></p>
+            
+        </div>
+    </div>  
+
+
+    <%  }) %>
+</div>
+</div>
+
+</section>
+</section>
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="/subject.js"></script>    
+
+    <script type="module" src="/firebase.js"></script>    
+</body>
+</html>

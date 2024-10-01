@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <section id="main">
+        <%- include('./partials/sidebar.ejs') %>
+    
+    <section id="main-content">
+
+        <p style="padding: 0px 20px;"><a href="/departments">departments </a> > <%= ids.id1 %></a></p>
+    <h2  id="galleryTitle"><%= collegeTitle %></h2>
+    
+    <% let ctr = 0; %>
+    <div class="subjects-container">
+        <% subjects.forEach(e => { const subjectData = e.data() %>
+            <% if(subjectData.collegeList.includes(ids.id2)) {  ctr++;%>
+                <div class="subject-card">
+                    <a style="display: flex; justify-content: space-between;" href="/departments/<%=ids.id1%>/<%=ids.id2%>/<%=subjectData.subjectCode%>">
+                        <% let avg = subjectData.avgRating.toFixed(1) %>
+                        <div>
+
+                        <h4><%= subjectData.subjectTitle %></h4>
+                        <h3><%= subjectData.subjectCode %></h3>
+                        <% avg = subjectData.avgRating.toFixed(0) %>
+                        <% if(avg == 1){ %>
+                            <div class="avgStars" >
+                                <h1 style="color: gold;">★</h1><h1>★★★★</h1>
+                            </div>
+                        <% } else if(avg == 2){ %>
+                            <div class="avgStars">
+                                <h1 style="color: gold;">★★</h1><h1>★★★</h1>
+                            </div>
+                        <% } else if(avg == 3){ %>
+                            <div class="avgStars">
+                                <h1 style="color: gold;">★★★</h1><h1>★★</h1>
+                            </div>
+                        <% } else if(avg == 4){ %>
+                            <div class="avgStars">
+                                <h1 style="color: gold;">★★★★</h1><h1>★</h1>
+                            </div>
+                        <% } else { %>
+                            <div class="avgStars">
+                                <h1 style="color: gold;">★★★★★</h1>
+                            </div>
+                        <% } %>
+                        </div>
+                        <div style="margin: 15px 0px;" >
+                    
+                            <div style="width: 100%;">
+                                <h5 style="text-align: center; font-size: 50px;margin: 0px 5px;color: #6D6C72;"><%= subjectData.avgRating.toFixed(1) %></h5>
+                                <p style="text-align: center; color: black; font-family: 'Poppins', sans-serif;  font-weight: 400; font-size: 10px;">Average Rating</p>
+                                <p style="text-align: center; color: black; font-family: 'Poppins', sans-serif;  font-weight: 400; font-size: 15px;">Reviews: <%= subjectData.numComments %> </p>
+                            </div>
+                        </div>
+                        
+                        
+                    </a>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+
+    <% if(ctr == 0){ %>
+        <h3 style="text-align: center;">There are no subjects to show</h3>
+    <% } %> 
+    </section>
+    </section>
+
+    <%- include('./partials/footer.ejs') %>
+
+
+    <script type="module" src="/firebase.js"></script>    
+</body>
+</html>
