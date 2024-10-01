@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+
+    <%- include('./partials/nav.ejs') %>
+
+    <div id="wholeBox">
+        <div id="rightBox">
+            <img src="/logo.png" alt="AdNUCC logo" style="height: 350px;">
+            <h2 style="text-align: center;">Welcome to 
+                <br>ADNU Course Compass!</h2>
+                <p>Discover what fellow students have to<br> say about your the courses being<br> offered by each department. </p>
+        </div>
+
+
+
+        <div style="display: block; margin: 50px 0px;" id='leftBox'>
+            <p id="alertBox">a</p>
+
+            <div id="loginBox">
+                <h2>Login</h2>
+                <form id="log">
+                    <div>
+                        <label for="Lemail">Email</label>
+                        <input type="email" name="Lemail" id="Lemail" required>
+                    </div>
+                    <div>
+                        <label for="Lpassword">Password</label>
+                        <input type="password" name="Lpassword" id="Lpassword" required>
+                    </div>
+                    <button id="LsubmitBTN" type="submit">Submit</button>
+                </form>    
+                 <p>Don't have an account yet? <a href="#" id="reghere">Register</a></p>
+
+            </div>
+       
+            <div id="registerBox" style="margin: px;">
+                <h2>Register</h2>
+
+            <form id="regis">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </div>
+
+                <div>
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" required>
+                </div>
+                <div>
+                    <label for="department">Select Department</label>
+                    <select id="departmentDropdown" name="department">
+                        <option value="">Select a Department</option>
+                        <option value="business">College of Business</option>
+                        <option value="comstud">College of Computer Studies</option>
+                        <option value="educ">College of Education</option>
+                        <option value="nursing">College of Nursing</option>
+                        <option value="humms">College of Humanities and Social Sciences </option>
+                        <option value="archi">College of Science, Engineering and Architecture</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="course">Select Course</label>
+                    <select id="courseDropdown" name="course" class="courses">
+                        <!-- Courses will be populated here based on department selection -->
+                    </select>
+                </div>
+                <button id="submitBTN" type="submit">Submit</button>
+            </form>
+            <p>Already registered? <a href="#" id="loghere">Sign In</a></p>
+            </div>
+        
+            
+        </div>
+
+    </div>
+
+
+    <script type="module" src="/firebase.js"></script>
+    <script src="/index.js"></script>
+    
+</body>
+</html>

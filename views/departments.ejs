@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <section id="main">
+        <%- include('./partials/sidebar.ejs') %>
+                <section id="main-content">
+
+            <h2  id="galleryTitle">Departments</h2>
+
+                <div class="gallery">
+                    <% departmentsData.forEach(e => { 
+                        const data = e.data(); 
+                    %>
+                    <a href="/departments/<%= data.departmentId %>">
+
+                    <div class="gallery-item">
+                        <h2 style="color: white;" id="dept"><%= data.departmentName %></h2>
+                    </div>
+                    </a>
+
+                    <% }) %>
+                </div>
+            </section>
+    </section>
+    <div>
+        <%- include('./partials/footer.ejs') %>
+
+    </div>
+
+    <script type="module" src="/firebase.js"></script>    
+</body>
+</html>
