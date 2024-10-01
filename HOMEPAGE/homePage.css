@@ -1,0 +1,509 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Keep full height for the viewport */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+body {
+    display: flex; /* Use flexbox to layout children */
+    flex-direction: column; /* Stack children vertically */
+}
+
+nav {
+    background-color: #ffffff; /* Navbar background color */
+    height: 100px; /* Fixed height for navbar */
+    width: 100%; /* Full width for navbar */
+    box-shadow: 0px 4px 4px #1486ee40; /* Shadow effect */
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    position: fixed; /* Fix position at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* High z-index to stay above content */
+}
+
+.product-logo {
+    width: 250px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+    margin: 5px 5px;
+}
+
+nav ul li a {
+    font-family: "Lato-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    padding: 27.5px 20px;
+    color: #555555;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul li .home {
+    height: 35px;
+}
+
+a.active {
+    position: relative;
+}
+
+a.active::before {
+    content: '';
+    position: absolute;
+    background: #43425E;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -9px;
+    transition: width 0.5s ease;
+}
+
+a.active:hover::before {
+    width: 100%;
+}
+
+ul li ul.dropdown {
+    top: 95px;
+    display: none;
+    position: absolute;
+    background: #1486ee40;
+    width: 100%;
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+}
+
+ul li a:hover {
+    background: transparent;
+}
+
+.classroom h1 {
+    margin: 0; /* Remove margin for better control */
+    font-size: 45px;
+    font-family: "Lato-Black", Helvetica;
+    font-weight: 900;
+    color: #1e2772;
+}
+
+.classroom {
+    display: flex;
+    justify-content: space-between; /* Align heading and button on opposite sides */
+    align-items: flex-start; /* Align content at the top */
+    padding: 0 50px;
+    margin-top: 140px; /* Adjust the top space */
+    margin-right: 160px;
+}
+
+.classroom button {
+    cursor: pointer;
+    background-color: #c8def5; /* Light blue color for the button */
+    padding: 6px 13px; /* Adjust padding for a balanced button size */
+    border-radius: 5px;
+    color: rgb(75, 70, 70);
+    font-size: 20px;
+    border: none;
+    display: flex; /* Use Flexbox for aligning text and image */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.classroom button:hover {
+    box-shadow: 0 4px 15px rgba(80, 80, 80, 0.3);
+}
+
+.classroom button img {
+    margin-bottom: 5px;
+    width: 40px;
+    height: auto;
+}
+
+.class-text {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: "Lato-SemiBold", Helvetica;
+    color: #1e2772;
+    line-height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.class-textLast {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: "Lato-SemiBold", Helvetica;
+    color: #1e2772;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 90px;
+}
+
+.class-textTop {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: "Lato-SemiBold", Helvetica;
+    color: #1e2772;
+    line-height: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: #5ea8ed;
+    padding: 15px 0; /* Space inside the footer */
+    text-align: center;
+    position: fixed; /* Change to fixed to stay at the bottom */
+    bottom: 0;
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 30px;
+    display: flex; /* Use flexbox for footer content alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    z-index: 1000; /* High z-index to stay above other content */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    width: 100%; /* Ensure footer content uses full width */
+}
+
+.footer-content p {
+    margin: 0;
+    color: white;
+}
+
+.designRec3 {
+    position: absolute; /* Keep position absolute for bottom alignment */
+    bottom: 0; /* Align to the bottom of the right-container */
+    width: 100%; /* Full width of the right-container */
+    height: auto; /* Maintain aspect ratio */
+    left: 0; /* Align to the left edge */
+}
+
+.designRec3 img {
+    width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.classroomContainer {
+    position: fixed;
+    background: #ffffff;
+    width: 360px;  /* Base width for larger screens */
+    max-width: 90%;  /* Ensure it doesn't exceed 90% of the viewport width */
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);  /* Center horizontally */
+    border-radius: 10px;
+    display: none;  /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    box-shadow: 0px 4px 4px #00000040;
+    padding: 40px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.classroomContainer:hover {
+    box-shadow: 0 4px 15px rgba(80, 80, 80, 0.3);
+}
+
+.classroomContainer.show {
+    display: flex;
+}
+
+#overlay.show {
+    display: block;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Use 100vh to cover the full viewport height */
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1; /* Ensure it’s above other content but below the navbar */
+}
+
+.btn-close {
+    border: none;
+    background: transparent;
+    width: 25px;  /* Set the width of the button */
+    height: 25px; /* Set the height of the button */
+    cursor: pointer;
+    position: absolute;
+    top: 6.5px;    /* Adjust the vertical position */
+    right: 7px;  /* Adjust the horizontal position */
+    padding: 0;   /* Ensure no padding around the button */
+    z-index: 3;   /* Ensure it stays above other elements */
+}
+
+.add-classroom-container .formHeader {
+    position: absolute;
+    width: 910px;
+    height: 88px;
+    background-color: #5ea8ed;
+    top: -40px;
+    left: -69px;
+}
+
+.input-box input, .input-box select {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 0.5px solid #55555566;
+    font-size: 15px;
+    padding-left: 14px;
+}
+.input-box input {
+    padding-left: 18px;
+}
+.input-box h5 {
+    font-size: 15px;
+    font-family: "Lato-Regular", Helvetica;
+    font-weight: 400;
+    color: #43425E;
+    line-height: 30px;
+}
+
+.join-btn {
+    background-color: #69aeee;
+    font-size: 15px;
+    padding: 10px;
+    color: #ffffff;
+    font-family: "Lato-Bold", Helvetica;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    margin-top: 20px;
+    margin-left: 160px;
+}
+
+form h2 {
+    position: relative;
+    font-size: 24px;
+    text-align: center;
+    top: -29px;
+    font-family: "Lato-Black", Helvetica;
+    color: #ffffff;
+    padding-bottom: 10px;
+}
+
+.container {
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusts columns based on available space */
+    gap: 15px; /* Space between grid items */
+    padding: 0px 190px; /* Padding around the grid container */
+    justify-content: center; /* Center the grid items */
+}
+
+.red-BG-Board {
+    width: calc(100% - 40px); /* Adjust the width to fit within the container */
+    max-width: 310px;
+    margin: 3px auto; /* Center the items */
+    background-color: #ffffff;
+    border-radius: 10px; /* Less rounded corners for a cleaner look */
+    box-shadow: 0px 4px 4px #00000040;
+    overflow: hidden;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: 0.3s ease;
+}
+
+.red-BG-Board:hover {
+    box-shadow: 0 4px 15px rgba(80, 80, 80, 0.3);
+}
+
+.pinkwall {
+    width: 100%; /* Ensure the image covers the width of the container */
+    height: 132px;
+}
+
+.red-BG-Board .delete-btn {
+    position: relative; /* Or use absolute if preferred */
+    width: 34px;
+    height: 36px;
+    bottom: 9px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    left: 260px;
+}
+
+/* Responsive Styles for Tablets and Phones */
+@media (max-width: 1024px) {
+    .product-logo {
+        width: 200px; /* Adjust logo size for tablets */
+    }
+
+    nav ul {
+        margin-right: 40px; /* Reduce right margin */
+    }
+
+    nav ul li a {
+        font-size: 14px; /* Slightly smaller font size */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .classroom {
+        margin-top: 120px;
+        padding: 0 30px; /* Adjust padding */
+        margin-right: 30px;
+    }
+
+    .container {
+        padding: 0px 90px; /* Reduce container padding for better fit */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-logo {
+        width: 180px; /* Further reduce logo size for phones */
+        margin-left: 0;
+    }
+
+    nav ul li .home {
+        height: 25px;
+    }
+
+    nav ul {
+        margin-right: 20px; /* Further reduce right margin */
+    }
+
+    nav ul li a {
+        font-size: 12px; /* Smaller font size for phones */
+        padding: 11px; /* Adjust padding for phones */
+    }
+
+    nav {
+        height: 80px; /* Adjust height for mobile */
+    }
+
+    nav ul li {
+        margin: 5px 2px; /* Adjust margin for mobile */
+    }
+
+    a.active {
+        position: relative;
+    }
+    
+    a.active::before {
+        content: '';
+        position: absolute;
+        background: #43425E;
+        height: 3px;
+        width: 0%;
+        left: 0;
+        bottom: -19px;
+        transition: width 0.5s ease;
+    }
+    
+    a.active:hover::before {
+        width: 100%;
+    }
+    
+    ul li ul.dropdown {
+        top: 65px;
+        display: none;
+        position: absolute;
+        background: #1486ee40;
+        width: 100%;
+    }
+    
+    ul li:hover ul.dropdown {
+        display: block;
+    }
+    
+    ul li a:hover {
+        background: transparent;
+    }
+
+    .classroom h1 {
+        font-size: 25px;
+        font-family: "Lato-Black", Helvetica;
+        font-weight: 900;
+        color: #1e2772;
+    }
+
+    .classroom button {
+        cursor: pointer;
+        margin-right: 38px;
+        background-color: #c8def5; /* Light blue color for the button */
+        padding: 4px 5px; /* Adjust padding for a balanced button size */
+        border-radius: 5px;
+        color: rgb(75, 70, 70);
+        font-size: 14px;
+        border: none;
+        display: flex; /* Use Flexbox for aligning text and image */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        transition: background-color 0.3s ease; /* Smooth hover transition */
+    }
+    
+    .classroom button:hover {
+        box-shadow: 0 4px 15px rgba(80, 80, 80, 0.3);
+    }
+    
+    .classroom button img {
+        margin-bottom: 1px;
+        width: 20px;
+        height: auto;
+    }
+
+    .container {
+        padding: 0px 5px; /* Reduce container padding for mobile */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust grid columns */
+    }
+
+    .classroom h1 {
+        font-size: 24px; /* Smaller font for mobile */
+    }
+
+    .red-BG-Board {
+        height: auto;
+        width: 720px;
+    }
+
+    .classroomContainer {
+        width: 280px;  /* Reduce width for mobile screens */
+        height: 405px;
+        padding: 20px;  /* Reduce padding */
+        top: 50%;       /* Center vertically */
+        left: 50%;      /* Center horizontally */
+        transform: translate(-50%, -50%);  /* Move form to the center */
+    }
+}
+

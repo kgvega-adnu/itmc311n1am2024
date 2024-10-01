@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Trackie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/LOGINPAGE/loginPage.css">
+    <script type="module" src="/FIREBASE/firebaseauth.js"></script>
+</head>
+<body>  
+    <nav>
+        <label class="logo">
+            <img class="product-logo" src="/assets/Product Logo.png" alt="Product Logo">
+        </label>
+    </nav>
+
+    <div class="container">
+
+        <!-- [ARCK-001] SIGN UP PAGE -->
+        <div class="left-container" id="signUpForm">
+            <div class="company-logo">
+                <img src="/assets/companylogo.png">
+                <span>Arck Co.</span>
+            </div>
+            <h1 class="ACLC">Ateneo Child Learning Center</h1>
+
+            <form method="post">
+                <p>First Name</p>
+                <div class="input-firstname">
+                    <input type="text" id="fName" required>
+                    <div class="icon-BG">
+                        <img src="/assets/user.png" alt="User Icon">
+                    </div>
+                </div>
+
+                <p>Last Name</p>
+                <div class="input-firstname">
+                    <input type="text" id="lName" required>
+                    <div class="icon-BG">
+                        <img src="/assets/user.png" alt="User Icon">
+                    </div>
+                </div>
+
+                <p>Email Address</p>
+                <div class="input-firstname">
+                    <input type="text" id="rEmail" required>
+                    <div class="icon-BG">
+                        <img src="/assets/email.png" alt="User Icon">
+                    </div>
+                </div>
+
+                <p>Password</p>
+                <div class="input-firstname">
+                    <input type="password" id="rPassword" required>
+                    <div class="icon-BG">
+                        <img src="/assets/password.png" alt="User Icon">
+                    </div>
+                </div>
+
+                <div class="signupButton">
+                    <button id="submitSignUp">Sign Up</button>
+                </div>
+            </form>
+
+            <div id="signUpMessage" style="display:none; color:red;"></div>
+
+            <div class="Links">
+                <span class="Already-have-account">Already Have Acccount?</span>
+                <button class="signIn" id="signInButton">Sign In</button>
+            </div>
+        </div>
+
+        <!-- [ARCK-002] SIGN IN PAGE -->
+         <div class="left-container" id="signInForm">
+            <div class="company-logo">
+                <img src="/assets/companylogo.png" alt="">
+                <span>Arck Co.</span>
+            </div>
+            <h1 class="ACLC">Ateneo Child Learning Center</h1>
+            <form method="post">
+                <div id="signInMessage" class="messageDiv" style="display: none;"></div>
+                <p>Email Address</p>
+                <div class="input-firstname">
+                    <input type="text" id="Email" required>
+                    <div class="icon-BG">
+                        <img src="/assets/email.png" alt="User Icon">
+                    </div>
+                </div>
+
+                <p>Password</p>
+                <div class="input-firstname">
+                    <input type="password" id="Password" required>
+                    <div class="icon-BG">
+                        <img src="/assets/password.png" alt="User Icon">
+                    </div>
+                </div>
+                <p class="recover"><a href="#">Forgot Password?</a></p>
+
+                <div class="signupButton"><button id="submitSignIn">Sign In</button></div>
+            </form>
+
+            <div class="or-desktop"><p> ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Or login with ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯  </p></div>
+            <div class="or-tablet"><p> ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Or login with ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯  </p></div>
+            <div class="or-phone"><p> ⎯⎯⎯⎯⎯⎯⎯ Or login with ⎯⎯⎯⎯⎯⎯⎯  </p></div>
+
+            <div class="signInWithGoogleButton">
+                <button id="signInWithGbox"><img src="/assets/google-icon.png">Sign In With Gbox</button>
+            </div>
+            
+            <div class="Links">
+                <span class="Already-have-account">Don't have an Account?</span>
+                <button class="signIn" id="signUpButton">Sign Up</button>
+            </div>
+         </div>
+
+        <!--Right Container-->
+        <div class="right-container">
+            <img class="littletrackie-logo" src="/assets/logo.png" alt="">
+            <div class="small-ellipse"></div>
+            <div class="medium-ellipse"></div>
+            <div class="big-ellipse"></div>
+            <img class="down1" src="/assets/Rectangle 30.png">
+            <img class="down2" src="/assets/Rectangle 31.png">
+            <img class="teacher-sit" src="/assets/teacherSit.png">
+        </div>
+
+        <footer>
+            <div class="footer-content">
+              <p>&copy; 2024 ARCK Co | All rights reserved.</p>
+            </div>
+        </footer>
+        
+    </div>
+    <script src="/LOGINPAGE/loginPage.js"></script>
+</body>
+</html>

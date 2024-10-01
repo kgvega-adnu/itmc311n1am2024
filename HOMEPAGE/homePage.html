@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Trackie | Home</title>    <!-- Title of the webpage -->
+    <link rel="stylesheet" href="/HOMEPAGE/homePage.css">      <!-- Link to the external CSS file for styling -->
+</head>
+<body>
+    <div id="overlay"></div>
+    <!-- Navigation bar -->
+    <nav>
+        <label class="logo"><img class="product-logo" src="/assets/Product Logo.png"></label>
+        <ul><li><a class="active" href="/HOMEPAGE/homePage.html"><img class="home" src="/assets/Home.png"></a></li>
+    <!-- Profile section with a dropdown menu -->        
+            <li>
+                <a class="active" href="#"><img class="home" src="/assets/Profile.png"></a>
+                <ul class="dropdown">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="/LOGINPAGE/loginPage.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- Classroom section -->
+    <div class="classroom">
+    <!-- Classroom header and button to create a classroom -->
+        <h1>Classroom</h1>
+        <button id="openForm"><img src="/assets/Create Classroom.png" alt="">Create</button>
+    </div>
+
+    <!-- Classroom Form -->
+    <div class="classroomContainer" id="classroomForm">
+
+        <button id="closeForm" class="btn-close"><img class="btn-close" src="/assets/Multiply.png"></button>        
+     <!-- Form to create a classroom -->   
+        <div class="add-classroom-container">
+            <form action="" id="classroomAddForm" class="createClassroomForm">
+                <div class="formHeader"></div>
+                <h2>Create Classroom</h2>
+     <!-- Dropdown to select the level -->
+                <div class="input-box">
+                    <h5>Level</h5>
+                    <select name="Pre-School" id="preSchool" class="input-box" required>
+                        <option value="Nursery 1">Nursery 1</option>
+                        <option value="Nursery 2">Nursery 2</option>
+                        <option value="Kinder">Kinder</option>
+                    </select>
+                </div><br>
+       <!-- Input box for section name -->         
+                <div class="input-box">
+                    <h5>Section</h5>
+                    <input type="text" id="sectionName" required>
+                </div><br>
+                <div class="input-box">
+        <!-- Input box for schedule -->            
+                    <h5>Schedule</h5>
+                    <input type="text" id="schedule" required>
+                </div>
+        <!-- Submit button to create the classroom -->        
+                <button type="submit" class="join-btn">Create</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- Container for the list of classrooms -->
+    <div class="container" id="classroomList"></div>
+
+     <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+          <p>&copy; 2024 ARCK Co | All rights reserved.</p>
+        </div>
+    </footer>
+    <div class="designRec3"><img src="/assets/footer.png"></div>
+     <!-- Firebase and external JavaScript file links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="/HOMEPAGE/homePage.js"></script>
+</body>
+</html>
