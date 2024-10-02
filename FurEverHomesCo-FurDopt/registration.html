@@ -1,0 +1,133 @@
+<!-- 
+ Authored by: Rona Mae S. Vasquez
+ Back-end: Michael Daanoy
+ Company: FurEver Homes Co.
+ Project: FurDopt
+ Feature: [FDT-002] Account Registration Page
+ Description: The user is able to register by providing their email, username, and password. Before completing the registration,
+ the user can review the website's privacy policy, which is clickable, they must agree with it by checking the checkbox in order
+ to proceed. Additionally, the registration page includes an option for users who already have an existing account to log in.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="Account Registration page.css">
+
+    <title> FurDopt | Account Registration </title>
+    <link rel="icon" href="https://i.ibb.co/4TgRvxp/Fur-Dopt-Logo-2.png" type="image/x-icon" />
+    <script type="module" src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- LEFT CONTAINER -->
+        <div class="left_container">
+            <div class="side-img"></div>
+        </div>
+
+        <!-- RIGHT CONTAINER -->
+        <div class="right_container">
+            <P class="join">JOIN US FOR FREE</P>
+            <h1>Create Your Account</h1>
+            <p class="started">Get Started on Your Pet Adoption Journey</p>
+
+            <!-- LOGIN FORM -->
+            <form id="registerForm" class="form-container">
+                <input type="text" id="email_address" name="email_address" placeholder="Email address" required>
+                <input type="text" id="user_name" name="user_name" placeholder="Username" required>
+                <input type="password" id="user_password" name="user_password" placeholder="Password" required>
+                <!-- REMEMBER ME AND FORGOT PASSWORD LINE -->
+                <div class="agree">
+                    <label>
+                        <input type="checkbox" name="remember" id="privacyPolicy" required>
+                        I agree to the <a href="Privacy Policy page.html">Privacy Policy</a>
+                    </label>
+                </div>
+                <div id="checkboxError" style="color: red;"></div>
+                <button type="submit" id="submit_button" class="register_button"><strong>REGISTER</strong></button>
+
+                <!-- ACCOUNT REGISTRATION LINK -->
+                <p class="login">Already have an account? <a href="Login page.html">Log In</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+
+<!-- SCRIPTS -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, setDoc, doc, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC27V2d0DOfVG9CZgvEyqwNfAT0NHtpK60",
+        authDomain: "furdopt-d1f7b.firebaseapp.com",
+        projectId: "furdopt-d1f7b",
+        storageBucket: "furdopt-d1f7b.appspot.com",
+        messagingSenderId: "53446944629",
+        appId: "1:53446944629:web:be765ca3745b2c6ff3553c",
+        measurementId: "G-68ERH7FMP0"
+    };
+    document.getElementById("submit_button").addEventListener("click", function () {
+        console.log("User has registered");
+    })
+
+    const checkbox = document.getElementById("privacyPolicy");
+    const submitButton = document.getElementById("submit_button");
+    const errorDiv = document.getElementById("checkboxError");
+
+    submitButton.addEventListener("click", function (event) {
+        if (!checkbox.checked) {
+            event.preventDefault(); // Prevent form submission
+            errorDiv.innerText = "You must agree to the Privacy Policy.";
+        } else {
+            errorDiv.innerText = ""; // Clear any previous error message
+            console.log("User has registered");
+        }
+    });
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+    const auth = getAuth();
+
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const userEmail = document.getElementById('email_address').value;
+        const userName = document.getElementById('user_name').value;
+        const userPass = document.getElementById('user_password').value;
+
+        try {
+            const docRef = doc(db, "accounts", userName);
+            const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPass);
+
+            await setDoc(docRef, {
+                userEmail: userEmail,
+                userName: userName,
+                userPass: userPass,
+            });
+
+            console.log("Form submitted successfully:", userEmail);
+            alert("You have successfully registered!");
+
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("There was an error with your submission: " + error.message);
+        }
+    });
+</script>
+
+</html>

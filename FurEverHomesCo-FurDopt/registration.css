@@ -1,0 +1,185 @@
+/** 
+ Authored by: Rona Mae S. Vasquez
+ Company: FurEver Homes Co.
+ Project: FurDopt
+ Feature: [FDT-002] Account Registration Page
+ Description: The style sheet for the Account Registration Page.html
+**/
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter;
+}
+
+html, body 
+{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #E5D3B3;
+}
+
+.container 
+{
+    display: flex;
+    width: 100vw;
+    height: 100vh; 
+}
+
+.left_container, .right_container 
+{
+    width: 50vw; 
+    height: 100vh;
+}
+
+/** LEFT CONTAINER **/
+.left_container 
+{
+    position: relative;
+}
+
+.side-img{
+    background-image: url('https://i.ibb.co/9qpX245/Acc-registration-pic2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/** RIGHT CONTAINER **/
+.right_container 
+{
+    padding: 50px;
+    background-color: #E5D3B3;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center; 
+}
+
+.join
+{
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    padding: 46px;
+}
+
+h1 
+{
+    font-size: 40px;
+    color: #1e1e1e;
+    text-align: center;
+    margin-top: 26px;
+    margin-bottom: 10px;
+}
+
+.started
+{
+    font-size: 23px;
+    color: #1e1e1e;
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+/** FORM **/
+.form-container
+{
+    display: flex;
+    flex-direction: column;
+    padding: 46px;
+}
+
+input[type="text"], input[type="password"] 
+{
+    height: 58px;
+    padding: 16px;
+    border: 2px solid #74665B;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    font-size: 16px;
+}
+
+input[type="text"]
+{
+    margin-bottom: 14px;
+}
+
+input[type="password"]
+{
+    margin-bottom: 30px;
+}
+
+/** AGREE TERMS AND PRIVACY POLICY **/
+.agree
+{
+    color: rgba(30, 30, 30, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+
+.agree label a
+{
+    text-decoration: none;
+    color: rgba(30, 30, 30, 0.7);
+}
+
+.agree label a:hover
+{
+    font-weight: 500;
+}
+
+/** REGISTER AND LOGIN **/
+.register_button
+{
+    height: 58px;
+    padding: 12px;
+    border: 2px solid #74665B;
+    background-color: rgba(116, 102, 91, 0.7);
+    border-radius: 14px;
+    color: #ffffff;    
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.register_button:hover
+{
+    font-weight: 550;
+}
+
+.login
+{
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(30, 30, 30, 0.7);
+}
+
+.login a 
+{
+    color: #1e1e1e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login a:hover 
+{
+    text-decoration: underline;
+}
