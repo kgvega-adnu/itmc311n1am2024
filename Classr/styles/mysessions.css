@@ -1,0 +1,80 @@
+#mysessions-icon {
+    color: #571B7E;
+}
+
+#mysessions-title {
+    color:#571B7E;
+    font-weight: 900;
+}
+
+.sidebar ul li:nth-of-type(3) a {
+    border-right: 4px solid #571B7E;
+}
+
+.main-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+#sessions-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-width: 1440px;
+    min-height: 680px;
+    margin: 10px;
+}
+
+#session-card {
+    border-radius: 20px;
+    background-color: #FFFCF8;
+    /* display: inline-block; */
+    /* flex-direction: column; */
+    padding-bottom: 18px;
+    margin: 16px;
+    font: 200 14px Inter, sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.13);
+    width: 280px;
+    height: 200px;
+    cursor: pointer;
+}
+
+#session-card::after {
+    content: "";
+    width: 350px;
+}
+
+#session-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+}
+
+.no-doc-msg {
+    color: #571B7E;
+    width: 320px;
+    margin: 250px auto;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.card-header {
+    background-color: #1A98A6;
+    width: 100%;
+    height: 84px;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 6px solid #571B7E;
+}
+
+.card-title {
+    padding: 14px 14px 3px 14px;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.card-info {
+    padding: 1px 14px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classr. - Login</title>
+  <link rel="stylesheet" href="../styles/login-signup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <script type="module" src="../src/all/firebaseauth.js"></script>
+</head>
+<body>
+  <!-- <div class="login-page"> -->
+    <header>
+      <div class="header-frame">
+        <img src="../static/images/classrLogo.png" alt="classr.Logo" class="logo">
+      </div>
+    </header>
+    <div class="container" id="signup" style="display:none;">
+      <h1 class="form-title">User Sign Up</h1>
+      <form method="post" action="">
+        <div class="messageDiv" id="signUpMessage" style="display: none;"></div>
+        <input type="text" name="fullName" id="fullName" placeholder="Full Name" required>
+        <!-- <input type="text" name="firstName" id="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name" required> -->
+        <input type="email" name="email" id="addEmail" placeholder="Email" required>
+        <input type="password" name="password" id="addPassword" placeholder="Password" required>
+        <p>Already have an Account? <button class="switchPageButton" id="signInButton">Sign In</button> </p>
+        <div class="submit-container">
+          <button class="submit-btn" id="submitSignUp">Sign Up</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container" id="signIn">
+        <h1 class="form-title">User Login</h1>
+        <form method="post" action="">
+          <div class="messageDiv" id="signInMessage" style="display: none;"></div>
+          <input type="email" name="email" id="email" placeholder="Email" required>
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <p>Don't have an account? <button class="switchPageButton" id="signUpButton">Sign Up</button></p>
+          <div class="submit-container">  
+            <button class="submit-btn" id="submitSignIn">Login</button>
+          </div>
+        </form>
+      </div>
+      <p class="bottom">E-Tech Solutions, All Rights Reserved 2024</p>
+      <!-- <script src="script.js"></script> -->
+</body>
+  <script src="../src/all/indexScript.js"></script>
+</html>

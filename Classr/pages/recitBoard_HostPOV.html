@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/recitBoard_HostPOV.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="../src/recitBoard/recitBoard_HostPOV.js"></script>
+    <title>Classr. - My Session | Recitation Board</title>
+</head>
+<body> 
+    <nav>
+        <div class="nav-left">
+            <i class='bx bx-menu' id="nav-btn"></i>
+            <a href="home.html"><img src="../static/images/classrLogo.png" class="classrLogo"></a>
+        </div>
+        <div class="nav-right">
+            <a href="#" onclick="toggleMenu()"><i class=' bx bxs-user-circle' id="user-icon"></i></a>
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <i class='bx bxs-user-circle' id="user-icon"></i>
+                        <p><span id="userFirstName"></span> <span id="userLastName"></span></p>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link" id="logout">
+                        <i class='bx bx-log-out'></i>
+                        <p>Log out</p>
+                        <span><i class='bx bx-chevron-right' ></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-main-content">
+        <div class="sidebar">
+            <ul>
+                <li class="home-btn">
+                    <a href="home.html">
+                        <i class='bx bx-home-alt' id="home-icon"></i>
+                        <span class="sidebar-item" id="home">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sessions.html">
+                        <i class='bx bx-book-open'></i>
+                        <span class="sidebar-item">Sessions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mysessions.html">
+                        <i class='bx bx-line-chart' ></i>
+                        <span class="sidebar-item">My Sessions</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="session-nav">
+      <div class="session-info">
+        <button id="backBtn" class="back-btn">&lt;</button>
+        <div class="session-name" id="sessionName">ITMC311 - N1</div>
+      </div>
+      <div class="nav-links">
+        <button id="recitBoardBtn" class="nav-link" onclick="location.href='recitBoard_HostPOV.html'">Recitation Board</button>
+        <button id="membersBtn" class="nav-link" onclick="location.href='members.html'">Members</button>
+        <button id="groupsBtn" class="nav-link" onclick="location.href='groups_HostPOV.html'">Groups</button>
+        <button id="leaderboardBtn" class="nav-link" onclick="location.href='leaderboard.html'">Leaderboard</button>
+    </div>
+    </div>
+    <div class="button-container">
+        <div class="sort-buttons">
+          <span>Sort:</span>
+          <button id="mostPointsBtn" class="sort-btn active">Most Points</button>
+          <button id="leastPointsBtn" class="sort-btn">Least Points</button>
+        </div>
+        <div class="recitation-mode-buttons">
+            <button id="individualModeBtn" class="mode-btn active">Individual</button>
+            <button id="groupModeBtn" class="mode-btn">Groupings</button>
+        </div>
+      </div>
+  
+      <div class="members-list-container" id="membersListContainer">
+          <table class="members-list-table">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Points</th>
+                      <th>Add Points</th>
+                  </tr>
+              </thead>
+              <tbody id="membersList">
+                  <tr class="member-row">
+                      <td>
+                          <div class="member-info">
+                            <i class=' bx bxs-user-circle' id="user-icon"></i>
+                              <div>
+                                  <span class="member-name">Johannabel DC. Valenzuela</span>
+                                  <span class="member-details">Rank: 1st | Group: 2 | Group Rank: 1st</span>
+                              </div>
+                          </div>
+                      </td>
+                      <td class="member-points" data-points="300">300</td>
+                      <td>
+                          <button class="add-points-btn">+</button>
+                      </td>
+                  </tr>
+                  <tr class="member-row">
+                      <td>
+                          <div class="member-info">
+                            <i class=' bx bxs-user-circle' id="user-icon"></i>
+                              <div>
+                                  <span class="member-name">Bryan Jay B. Balona</span>
+                                  <span class="member-details">Rank: 2nd | Group: 2 | Group Rank: 1st</span>
+                              </div>
+                          </div>
+                      </td>
+                      <td class="member-points" data-points="240">240</td>
+                      <td>
+                          <button class="add-points-btn">+</button>
+                      </td>
+                  </tr>
+                  <tr class="member-row">
+                      <td>
+                          <div class="member-info">
+                            <i class=' bx bxs-user-circle' id="user-icon"></i>
+                              <div>
+                                  <span class="member-name">Francis Gerard A. Caraan</span>
+                                  <span class="member-details">Rank: 3rd | Group: 2 | Group Rank: 1st</span>
+                              </div>
+                          </div>
+                      </td>
+                      <td class="member-points" data-points="200">200</td>
+                      <td>
+                          <button class="add-points-btn">+</button>
+                      </td>
+                  </tr>
+                  <!-- Repeat for other members -->
+              </tbody>
+          </table>
+      </div>
+
+      <div class="groups-list-container" id="groupsListContainer">
+        <table class="groups-list-table">
+            <thead>
+                <tr>
+                    <th>Group</th>
+                    <th>Total</th>
+                    <th>Add Points</th>
+                </tr>
+            </thead>
+            <tbody id="groupsList">
+                <tr class="group-row">
+                    <td>
+                        <div class="group-info">
+                            <i class='bx bx-group' id="group-icon"></i>
+                            <div>
+                                <span class="group-name">Group 2</span>
+                                <span class="group-details">Rank: 1st</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="group-points" data-points="740">740</td>
+                    <td>
+                        <button class="add-points-btn">+</button>
+                    </td>
+                </tr>
+                <tr class="group-row">
+                    <td>
+                        <div class="group-info">
+                            <i class='bx bx-group' id="group-icon"></i>
+                            <div>
+                                <span class="group-name">Group 1</span>
+                                <span class="group-details">Rank: 2nd</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="group-points" data-points="700">700</td>
+                    <td>
+                        <button class="add-points-btn">+</button>
+                    </td>
+                </tr>
+                <tr class="group-row">
+                    <td>
+                        <div class="group-info">
+                            <i class='bx bx-group' id="group-icon"></i>
+                            <div>
+                                <span class="group-name">Group 3</span>
+                                <span class="group-details">Rank: 3rd</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="group-points" data-points="600">600</td>
+                    <td>
+                        <button class="add-points-btn">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </body>
+  <script src="../scripts/recitBoard_HostPOV.js"></script>
+  </html>
