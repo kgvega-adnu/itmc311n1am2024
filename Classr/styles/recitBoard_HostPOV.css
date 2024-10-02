@@ -1,0 +1,497 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+}
+
+body {
+  background-color: #FDF6EE;
+}
+
+.classrLogo {
+  width: 100px;
+  margin-right: 45px;
+}
+
+#home-icon {
+  color: #571B7E;
+}
+
+#home {
+  color:#571B7E;
+  font-weight: 900;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: sticky;
+  height: 38px;
+  top: 0;
+  z-index: 100;
+  background-color: #f8fff8;
+  box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
+}
+
+.nav-left, .nav-right{
+  display: flex;
+  align-items: center;
+}
+
+.nav-left div img{
+  width: 24px;
+  margin: 0 15px;
+}
+
+#user-icon {
+  width: 24px;
+  margin-right: 28px;
+  font-size: 38px;
+  color: #571B7E;
+}
+
+#nav-btn {
+  color: black;
+  top: 0.4rem;
+  left: 50%;
+  font-size: 1.2rem;
+  line-height: 50px;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.sidebar-main-content{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -150px;
+  height: 100vh;
+  margin-top: 58px;
+  width: 40px;
+  background-color: #FFFCF8;
+  border-right: 1px solid rgba(0, 0, 0, .13);
+  transition: 0.2s;
+}
+
+.sidebar.active ~ .main-content {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+.sidebar.active {
+  left: 0;
+  width: 220px;
+}
+
+.sidebar ul li {
+  position: relative;
+  list-style-type: none;
+  height: 50px;
+  width: 100%;
+  margin-top: 2px;
+  line-height: 50px;
+}
+
+.sidebar ul li  a {
+  color: black;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: "Inter";
+}
+
+.sidebar ul li:nth-of-type(1) a {
+  border-right: 4px solid #571B7E;
+}
+
+.sidebar ul li a span {
+  transition: transform 0.5s;
+}
+
+.sidebar ul li a:hover span {
+  transform: translateX(5px);
+}
+
+.sidebar ul li a:hover {
+  font-weight: 900;
+  color: #1A98A6;
+}
+
+.sidebar ul li a i {
+  min-width: 50px;
+  text-align: center;
+  height: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+}
+
+.sidebar .sidebar-item {
+  opacity: 1;
+}
+
+.sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  left: 78%;
+  width: 320px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.sub-menu-wrap.open-menu {
+  max-height: 400px;
+}
+
+.sub-menu {
+  background-color: #FFFCF8;
+  padding: 20px;
+  margin: 6px 10px 10px 10px;
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-radius: 0px 0px 20px 20px;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  margin: 10px 0 15px;
+}
+
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+  margin: 12px 0;
+}
+
+.sub-menu-link span {
+  transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span {
+  transform: translateX(5px);
+}
+
+.sub-menu-link:hover {
+  color: #1A98A6;
+  font-weight: 800;
+}
+
+.sub-menu-link p {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info p {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.session-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px; 
+  height: 38px;
+  background-color: #f8fff8; 
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); 
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+}
+
+#backBtn {
+  font-size: 1.5em;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin-right: 15px;
+  color: #000000;
+}
+
+.session-name {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #571B7E;
+}
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+  padding-right: 20%;
+}
+
+.nav-link {
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 20px 30px;
+  color: #000000;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 0.3s, color 0.3s;
+}
+
+.nav-link.active {
+  font-family: "Lilita One";
+  color: #1A98A6;
+  font-size: 1.3em;
+  border-bottom: 3px solid #1A98A6; 
+}
+
+.nav-link:hover {
+  font-family: "Lilita One";
+  color: #1A98A6;
+  font-size: 1.3em;
+  border-bottom: 3px solid #1A98A6; 
+}
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 5px; 
+  margin-top: 0px; 
+}
+
+.sort-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 50px;
+  gap: 30px;
+  outline: 1px solid #83898a;
+  border-radius: 50px;
+}
+
+.recitation-mode-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 50px; 
+  gap: 30px;
+  outline: 1px solid #83898a;
+  border-radius: 50px;
+}
+
+.sort-btn, .mode-btn {
+  border: none;
+  background-color: #FDF6EE;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sort-btn.active, .mode-btn.active {
+  font-weight: bold;
+  color: #1A98A6;
+  border-bottom: 2px solid #1A98A6; 
+}
+
+.sort-btn:hover, .mode-btn:hover {
+  color: #1A98A6;
+  border-bottom: 3px solid #1A98A6; 
+}
+
+#membersListContainer, #groupsListContainer {
+  display: none; 
+}
+
+
+.members-list-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.members-list-table {
+  width: 100%; 
+  border-collapse: collapse;
+  border-color: #571B7E;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border: #571B7E;
+}
+
+.members-list-table thead th {
+  border-collapse: collapse;
+  background-color: #571B7E;
+  height: 40px;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.members-list-table tbody tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.members-list-table tbody tr:first-child td:first-child, 
+.members-list-table thead th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.members-list-table tbody tr:first-child td:last-child, 
+.members-list-table thead th:last-child {
+  border-top-right-radius: 15px; /* Top-right border radius */
+}
+
+.members-list-table tbody tr {
+  border-bottom: 0.5px solid #757575;
+  border-left: 0.5px solid #571B7E;
+  border-right: 0.5px solid #571B7E;
+}
+
+.member-info {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  width: 100%; 
+  text-align: left;
+}
+.member-name {
+  font-weight: bold;
+  display: block;
+}
+
+.member-details {
+  font-size: 12px;
+  color: #757575;
+  word-spacing: 5px;;
+}
+
+.member-points {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-points-btn {
+  background-color: #1A98A6;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-points-btn:hover {
+  background-color: #571B7E;
+}
+
+
+.groups-list-container{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.groups-list-table {
+  width: 100%; 
+  border-collapse: collapse;
+  border-color: #571B7E;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border: #571B7E;
+}
+
+.groups-list-table thead th {
+  border-collapse: collapse;
+  background-color: #571B7E;
+  height: 40px;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.groups-list-table tbody tr:first-child td:first-child, 
+.groups-list-table thead th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.groups-list-table tbody tr:first-child td:last-child, 
+.groups-list-table thead th:last-child {
+  border-top-right-radius: 15px; /* Top-right border radius */
+}
+
+.groups-list-table tbody tr {
+  border-bottom: 0.5px solid #757575;
+  border-left: 0.5px solid #571B7E;
+  border-right: 0.5px solid #571B7E;
+}
+
+.groups-list-table tbody tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#group-icon {
+  width: 24px;
+  margin-right: 28px;
+  font-size: 38px;
+  color: #571B7E;
+}
+
+.group-info {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  width: 100%; 
+  text-align: left;
+}
+
+.group-name {
+  font-weight: bold;
+  display: block;
+}
+
+.group-details {
+  font-size: 12px;
+  color: #757575;
+  word-spacing: 5px;;
+}
+
+.group-points {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-group-points-btn {
+  background-color: #1A98A6;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-group-points-btn:hover {
+  background-color: #571B7E;
+}

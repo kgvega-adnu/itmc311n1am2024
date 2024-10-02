@@ -1,0 +1,120 @@
+* {
+  font-family: "Inter";
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FDF6EE;
+  background-image: url('../static/images/landingPagedesign1.png'), url('../static/images/landingPagedesign2.png');
+  background-repeat: no-repeat;
+  background-position: bottom left, bottom right;
+  background-size: 20%, 20%;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFFCF8;
+  display: flex;
+  align-items: center;
+  padding: 10px 40px; 
+  box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.25);
+}
+
+header .logo {
+  width: 120px;
+  margin-right: 45px;
+}
+
+.container {
+  background-color: #FFFCF8;
+  padding: 20px 40px;
+  border-radius: 60px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 450px; 
+  width: 100%;
+  margin-top: 50px;
+}
+
+.form-container {
+  text-align: center;
+}
+
+.form-title {
+  font-family: "Lilita One";
+  color: #571B7E;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 90%;
+  height: 80%;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline-color: #1A98A6;
+}
+
+.switchPageButton {
+  border: none;
+  background: none;
+  color: #1A98A6;
+  text-decoration: underline;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 20px;
+  width: 40%;
+  height: 38px;
+  font-size: 18px;
+  background-color: #1A98A6;
+  color: #FFFFFF;
+  font-family: "Lilita One";
+  position: relative;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #1D757F;
+}
+
+p {
+  margin-top: 0;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.messageDiv {
+  background-color: #571B7E;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  opacity: 0;
+  animation: fadeOut 7s forwards;
+}
+
+.bottom {
+  position: absolute;
+  margin-top: 720px;
+  color: #808080;
+  font-weight: 300;
+  font-size: 12px;
+  font-style: italic;
+}

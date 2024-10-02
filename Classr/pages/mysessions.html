@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/mysessions.css">
+    <link rel="stylesheet" href="../styles/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Classr. - My Sessions</title>
+    <script type="module" src="../src/all/allPre.js"></script>
+    <script type="module" src="../src/mysessions/mysessionPre.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="nav-btn-container">
+                <button id="nav-btn">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+                <a href="home.html"><img src="../static/images/classrLogo.png" class="classrLogo"></a>
+        </div>
+        <div class="nav-right" onclick="toggleMenu()">
+            <p class="nav-name"><span id="navFullName"></span></p>
+            <a href="#"><i class='bx bxs-user-circle' id="user-icon"></i></a>
+            <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <div class="user-icon-container">
+                            <i class='bx bxs-user-circle' id="user-icon"></i>
+                        </div>
+                        <div class="user-info-container">
+                            <p class="user-name"><span id="userFullName"></span></p>
+                            <p class="user-email"><span id="userEmail"></span></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link" id="logout">
+                        <i class='bx bx-log-out'></i>
+                        <p>Log out</p>
+                        <span><i class='bx bx-chevron-right' ></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-main-content">
+        <div class="sidebar">
+            <ul>
+                <li class="home-btn">
+                    <a href="home.html">
+                        <i class='bx bx-home-alt'></i>
+                        <span class="sidebar-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sessions.html">
+                        <i class='bx bx-book-open'></i>
+                        <span class="sidebar-item">Sessions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mysessions.html">
+                        <i class='bx bx-line-chart' id="mysessions-icon"></i>
+                        <span class="sidebar-item" id="mysessions-title">My Sessions</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div id="sessions-container">
+                <!-- session card -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../src/all/allPost.js"></script>
+</html>
