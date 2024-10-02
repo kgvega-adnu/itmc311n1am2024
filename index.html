@@ -1,0 +1,119 @@
+<!-- 
+ Authored by: Rona Mae S. Vasquez
+ Back-end: Michael Daanoy
+ Company: FurEver Homes Co.
+ Project: FurDopt
+ Feature: [FDT-001] Login Page
+ Description: The user is able to login to the website using fields for their username and password, with the option to select 
+ a "Remember Me" checkbox to save their credentials. If they forget their password, the user can click a "Forgot Password?" link 
+ for recovery. New users are able to register for an account through a provided option, the "Register Now". Additionally, the 
+ user can view the "Privacy Policy," and access an "About Us" button to learn more about the website.
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- FONT -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <!-- CSS LINK -->
+        <link rel="stylesheet" href="Login page.css">
+
+        <title> FurDopt | Login </title>
+        <link rel="icon" href="https://i.ibb.co/4TgRvxp/Fur-Dopt-Logo-2.png" type="image/x-icon" />
+        <script type="module" src="script.js" defer></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- LEFT CONTAINER -->
+            <div class="left_container">
+                <div class="logo">
+                    <img src="https://i.ibb.co/sKCDx1K/Fur-Dopt-Logo.png" alt="Logo">
+                </div>
+                <h1>Login to Your Account</h1>
+                <p class="welcome">Welcome Back. You've been missed!</p>
+                
+                <!-- LOGIN FORM -->
+                <form id="loginForm" class="form-container">
+                    <input type="text" id="email_address" name="email_address" placeholder="Email address" required>
+                    <input type="password" id="user_password" name="user_password" placeholder="Password" required>
+                    <!-- REMEMBER ME AND FORGOT PASSWORD LINE -->
+                    <div class="remember_forgot">
+                        <label>
+                            <input type="checkbox" name="remember">
+                            Remember Me
+                        </label>
+                        <a href="Forgot Password page.html" class="forgot_password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" id="submit_button" class="login_button"><strong>LOGIN</strong></button>
+                    
+                    <!-- ACCOUNT REGISTRATION LINK -->
+                    <p class="register">Don't have an account? <a href="Account Registration page.html">Register Now</a></p>
+                </form>
+                <div class="bottom">
+                    <a href="Privacy Policy page.html">Privacy Policy</a>
+                    <p>Copyright 2024</p>
+                </div>
+            </div>
+
+            <!-- RIGHT CONTAINER -->
+            <div class="right_container">
+                <div class="right_container">
+                    <div class="side-img"></div>
+                    <a href="About Us page.html" class="about">About Us</a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- SCRIPTS -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    
+        const firebaseConfig = {
+        apiKey: "AIzaSyC27V2d0DOfVG9CZgvEyqwNfAT0NHtpK60",
+        authDomain: "furdopt-d1f7b.firebaseapp.com",
+        projectId: "furdopt-d1f7b",
+        storageBucket: "furdopt-d1f7b.appspot.com",
+        messagingSenderId: "53446944629",
+        appId: "1:53446944629:web:be765ca3745b2c6ff3553c",
+        measurementId: "G-68ERH7FMP0"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+    
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+    
+        const userEmail = document.getElementById('email_address').value;
+        const userPass = document.getElementById('user_password').value;
+    
+        console.log("Email:", userEmail);
+        console.log("Password:", userPass);
+    
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(userEmail)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPass);
+            console.log("Login successful:", userCredential.user.email);
+            alert("You have successfully logged in!");
+            // Optionally redirect to another page
+            // window.location.assign("./dashboard.html");
+    
+        } catch (error) {
+            console.error("Error logging in:", error);
+            alert("There was an error logging in: " + error.message);
+        }
+        });
+    </script>
+</html>
