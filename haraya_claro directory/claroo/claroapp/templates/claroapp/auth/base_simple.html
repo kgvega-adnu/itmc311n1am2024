@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>{% block title %}Claro{% endblock %}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .left-container,
+        .right-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .left-container {
+            background: url('{% static "images/base_simple_image.jpg" %}') no-repeat center center;
+            background-size: cover;
+        }
+
+        .right-container {
+            background: rgb(102, 171, 238);
+        }
+
+        .logo {
+            position: absolute;
+            top: -50px;
+            left: 0px;
+            width: 250px;
+            /* Adjust the width as needed */
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+        }
+
+        .additional-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: auto;
+        }
+
+        .form-floating .form-control {
+            border-radius: 50px;
+            padding-left: 20px;
+        }
+
+        .login-title {
+            font-family: 'baloo 2', bold;
+            color: white;
+            font-size: 4rem;
+            text-align: center;
+            font-weight: 700;
+            padding-bottom: 40px;
+        }
+
+        .custom-label {
+            margin-left: 10px;
+            font-size: 18px;
+            font-family: 'baloo 2';
+            font-weight: 600;
+            color: rgba(137, 137, 137, 0.5);
+        }
+
+        .form-check-label {
+            margin-left: 10px;
+            font-size: 18px;
+            font-family: 'baloo 2';
+            font-weight: 600;
+            color: white;
+        }
+
+        .forgot-text {
+            margin-left: 10px;
+            font-size: 18px;
+            font-family: 'baloo 2', bold;
+            font-weight: 700;
+            color: rgb(25, 95, 179);
+        }
+
+        .btn {
+            border-radius: 50px;
+            background-color: rgb(25, 95, 179);
+            font-family: 'baloo 2';
+            font-weight: 600;
+            font-size: 30px;
+            padding: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1.5px solid rgb(151, 198, 255);
+        }
+
+        .role-btn {
+            border-radius: 50px;
+            background-color: rgb(25, 95, 179);
+            font-family: 'baloo 2';
+            font-weight: 600;
+            font-size: 30px;
+            padding: 8px;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1.5px solid rgb(151, 198, 255);
+        }
+
+        .eye-icon {
+            color: rgb(25, 95, 179);
+            cursor: pointer;
+        }
+
+        .dhaa_text {
+            margin-left: 10px;
+            font-size: 20px;
+            font-family: 'baloo 2';
+            font-weight: 600;
+            color: white;
+        }
+
+        .sun_text {
+            margin-left: 10px;
+            font-size: 20px;
+            font-family: 'baloo 2', bold;
+            font-weight: 700;
+            color: rgb(25, 95, 179);
+            text-decoration: none;
+        }
+
+        .register-title {
+            font-family: 'baloo 2', bold;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+
+        .register-title-below {
+            font-family: 'baloo 2', bold;
+            color: rgb(17, 81, 157);
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .role-button {
+            padding-left: calc(0.5rem + 20px);
+            padding-right: calc(0.5rem + 20px);
+            padding-bottom: calc(0.5rem + -10px);
+        }
+
+        .button-container {
+            background-color: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .role-button.active {
+            background-color: rgb(25, 95, 179);
+            color: white;
+            border: 1.5px solid rgb(151, 198, 255);
+        }
+
+        .role-button.inactive {
+            background-color: white;
+            color: rgb(25, 95, 179);
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="left-container">
+            <img src="{% static 'images/claro_logo.svg' %}" alt="App Logo" class="logo">
+            <img src="{% static 'images/auth_portrait_design.svg' %}" alt="Additional Image" class="additional-image">
+            <!-- Persistent image design -->
+        </div>
+        <!-- Container for the login and Register form -->
+        <div class="right-container">
+            <div id="content" name="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

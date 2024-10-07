@@ -1,0 +1,163 @@
+{% extends "claroapp/auth/base_simple.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<h1 class="register-title">Sign Up As</h1>
+<h1 id="role-title" class="register-title-below mb-4">Student</h1>
+
+<div class="d-flex justify-content-start mb-5">
+    <div class="button-container">
+        <button id="student-btn" class="role-btn rounded-pill mx-1 role-button active" onclick="setRole('Student')">
+            <i class="fas fa-user-graduate"></i>
+        </button>
+        <button id="teacher-btn" class="role-btn rounded-pill mx-1 role-button inactive" onclick="setRole('Teacher')">
+            <i class="fas fa-chalkboard-teacher"></i>
+        </button>
+    </div>
+</div>
+
+<form>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-pill" id="floatingFirstName" placeholder="First Name">
+                <label for="floatingFirstName" class="custom-label">First Name</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-pill" id="floatingLastName" placeholder="Last Name">
+                <label for="floatingLastName" class="custom-label">Last Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-pill" id="floatingEmail" placeholder="Email">
+                <label for="floatingEmail" class="custom-label">Email</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-pill" id="floatingPhone" placeholder="Phone">
+                <label for="floatingPhone" class="custom-label">Phone</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-pill" id="floatingDOB" placeholder="DD/MM/YYYY">
+                <label for="floatingDOB" class="custom-label">DD/MM/YYYY</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <div class="form-floating position-relative mb-3">
+                <input type="password" class="form-control rounded-pill" id="password" placeholder="Password" oninput="validatePassword()">
+                <label for="password" class="custom-label">Password</label>
+                <i class="fas fa-eye position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePassword('password', this)" style="color:rgb(25, 95, 179); cursor: pointer;"></i>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating position-relative mb-3">
+                <input type="password" class="form-control rounded-pill" id="repeat-password" placeholder="Repeat Password" oninput="validatePassword()">
+                <label for="repeat-password" class="custom-label">Repeat Password</label>
+                <i class="fas fa-eye position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePassword('repeat-password', this)" style="color:rgb(25, 95, 179); cursor: pointer;"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-12 d-flex align-items-center">
+            <i id="length-indicator" class="fas fa-circle me-2" style="color: white;"></i>
+            <span class="form-check-label">Password must have 8 characters</span>
+        </div>
+        <div class="col-12 d-flex align-items-center">
+            <i id="special-char-indicator" class="fas fa-circle me-2" style="color: white;"></i>
+            <span class="form-check-label">Include a number or special character</span>
+        </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center align-items-center mt-3">
+        <input class="form-check-input m-2" type="checkbox" id="rememberMe" name="remember_me">
+        <label for="terms-checkbox" class="form-check-label">By signing up you agree to the terms and conditions</label>
+    </div>
+    <div class="col-12 d-flex justify-content-center align-items-center mt-3">
+        <button type="submit" class="btn btn-primary w-50">Sign Up</button>
+    </div>
+    <div class="col-12 d-flex justify-content-center align-items-center mt-3">
+        <hr style="width: 100%; border-top: 2px solid white;">
+    </div>
+    <div class="col-12 d-flex justify-content-center align-items-center mt-3">
+        <span class="dhaa_text">Already have an account? </span>
+        <a href="{% url 'login' %}" class="ms-2 sun_text">Sign In Now</a>
+    </div>
+</form>
+
+<script>
+
+    // Function for the role buttons
+
+    function setRole(role) {
+        document.getElementById('role-title').innerText = role;
+
+        const studentBtn = document.getElementById('student-btn');
+        const teacherBtn = document.getElementById('teacher-btn');
+
+        if (role === 'Student') {
+            studentBtn.classList.add('active');
+            studentBtn.classList.remove('inactive');
+            teacherBtn.classList.add('inactive');
+            teacherBtn.classList.remove('active');
+        } else {
+            teacherBtn.classList.add('active');
+            teacherBtn.classList.remove('inactive');
+            studentBtn.classList.add('inactive');
+            studentBtn.classList.remove('active');
+        }
+    }
+
+    // Function for the eye icon to change into an eye-slash icon and vice versa
+
+    function togglePassword(id, icon) {
+        const input = document.getElementById(id);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    // Function for validating password
+
+    function validatePassword() {
+        const password = document.getElementById('password').value;
+        const lengthIndicator = document.getElementById('length-indicator');
+        const specialCharIndicator = document.getElementById('special-char-indicator');
+
+        // Check if password has at least 8 characters
+        if (password.length >= 8) {
+            lengthIndicator.style.color = 'rgb(25, 95, 179)';
+        } else {
+            lengthIndicator.style.color = 'white';
+        }
+
+        // Check if password includes a number or special character
+        const specialCharPattern = /[0-9!@#$%^&*]/;
+        if (specialCharPattern.test(password)) {
+            specialCharIndicator.style.color = 'rgb(25, 95, 179)';
+        } else {
+            specialCharIndicator.style.color = 'white';
+        }
+    }
+</script>
+
+{% endblock %}
