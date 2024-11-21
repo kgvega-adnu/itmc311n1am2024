@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    transition: opacity 0.5s;
+}
+
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensures it spans the full width */
+    z-index: 10; /* Keeps it above other elements */
+    box-sizing: border-box; /* Includes padding in width */
+}
+
+.navbar h1 {
+    font-family: 'Red Rose';
+    color: white;
+    margin: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-family: 'Red Rose';
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    background-color: #444;
+}
+
+.container {
+    display: flex;
+    flex: 1; /* Allows it to grow and fill the remaining height */
+    flex-direction: row; /* Aligns child elements side-by-side */
+    margin-top: 50px; /* Leaves space for the navbar */
+    width: 100%; /* Full width of the screen */
+    background-color: #4d4d4d;
+    padding: 20px;
+    justify-content: center; /* Spaces out child elements */
+    gap: 300px; /* Adds space between items */
+    align-items: stretch; /* Ensures equal height for child elements */
+    box-sizing: border-box; /* Includes padding in dimensions */
+}
+
+.profile-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Flexible width */
+    max-width: 300px; /* Optional max size */
+    box-sizing: border-box;
+}
+
+.profile-box {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto; /* Flexible height */
+    margin-bottom: 10px;
+}
+
+.profile-circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.edit-box {
+    background-color: black;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    width: 100%; /* Flexible width */
+}
+
+.delete-button {
+    background-color: #232323;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #f0f0f0;
+}
+
+
+.additional-box {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 80px;
+    flex: 2; 
+    width: 100%; 
+    height: auto;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    position: relative;
+    min-height: 150px;
+    max-width: 600px;
+}
+
+.bio-header {
+    margin-bottom: 30px;
+}
+
+.achievement {
+    margin-left: 20px;
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/cpp.css">
+<body>
+
+    <header class="navbar">
+        <a href="/html/homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="about.html">About Us</a>
+            <a href="/html/login.html">Log Out</a>
+        </div>
+    </header>
+
+    <h2>C++</h2>
+    <section class="togglebox">
+    <div class="info-box" id="infoBox" onclick="toggleInfo()">
+        <div class="profile-pic"></div>
+        <div class="info-text">
+            Michael Daanoy | MW | 1:30 - 5:00 PM<br>
+            C++ Basics<br>
+        </div>
+        <div class="functions" id="functionsContent">
+            C++ Basic functions:<br>
+            #include <iostream><br>
+            cout << <message>;<br>
+            cin >> variable;<br>
+            int, double, char, etc.<br><br>
+            Explanation:
+        </div>
+        <div class="message-box">Message</div>
+        <div class="toggle-indicator"></div> <!-- Triangle indicator -->
+        <div class="status-indicator" id="statusIndicator">0/1</div> <!-- Status indicator -->
+    </div>
+</section>
+    <script>
+        function toggleInfo() {
+            const functionsContent = document.getElementById('functionsContent');
+            const statusIndicator = document.getElementById('statusIndicator');
+            if (functionsContent.style.display === 'none') {
+                functionsContent.style.display = 'block';
+            } else {
+                functionsContent.style.display = 'none';
+            }
+        }
+
+    
+        function toggleStudentStatus() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            if (statusIndicator.textContent === '0/1') {
+                statusIndicator.textContent = '1/1'; 
+            } else {
+                statusIndicator.textContent = '0/1'; 
+            }
+        }
+
+        document.getElementById('functionsContent').style.display = 'block';
+    </script>
+
+</body>
+</html>
+

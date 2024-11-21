@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/profile_edit.css">
+
+    <script>
+        // edit bio
+        function editBio() {
+            const bioText = prompt("Enter a new Bio:");
+            if (bioText) {
+                const bioContainer = document.getElementById("bio-list");
+                const bioItem = document.createElement("li");
+                bioItem.textContent = bioText;
+
+                // delete
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function () {
+                    bioContainer.removeChild(bioItem); // Remove bio item
+                };
+
+                bioItem.appendChild(deleteButton);
+                bioContainer.appendChild(bioItem);
+
+                // Remove placeholder 
+                if (bioContainer.children.length === 1 && bioContainer.children[0].textContent === "Add biography!") {
+                    bioContainer.innerHTML = ''; 
+                }
+            }
+        }
+        // edit achievements
+        function editAchievements() {
+            const achievementText = prompt("Enter a new Academic Achievement:");
+            if (achievementText) {
+                const achievementContainer = document.getElementById("achievement-list");
+                const achievementItem = document.createElement("li");
+                achievementItem.textContent = achievementText;
+
+                // Create delete button for each item
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function () {
+                    achievementContainer.removeChild(achievementItem); // Remove the achievement item
+                };
+
+                achievementItem.appendChild(deleteButton);
+                achievementContainer.appendChild(achievementItem);
+
+                // Remove placeholder if any
+                if (achievementContainer.children.length === 1 && achievementContainer.children[0].textContent === "It's empty!") {
+                    achievementContainer.innerHTML = ''; // Remove placeholder
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <a href="homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="about.html">About Us</a>
+            <a href="/html/login.html">Logout</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile-message-container">
+            <div class="profile-box">
+                <div class="profile-circle"></div>
+                <div class="profile-name">Michael Angelo D. Daanooy</div>
+            </div>
+        </div>
+        <div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Bio</strong></div>
+                <!-- List for Bio -->
+                <ul id="bio-list">
+                </ul>
+                <!-- Edit Button inside the container -->
+                <button class="edit-button" onclick="editBio()">Edit</button>
+            </div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Academic Achievements</strong></div>
+                <!-- List for Academic Achievements -->
+                <ul id="achievement-list">
+                </ul>
+                <!-- Edit Button inside the container -->
+                <button class="edit-button" onclick="editAchievements()">Edit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
