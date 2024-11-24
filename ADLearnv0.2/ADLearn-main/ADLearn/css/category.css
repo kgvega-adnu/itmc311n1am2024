@@ -1,0 +1,250 @@
+body {
+    font-family: 'Red Rose';
+    background-color: #696969;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    transition: opacity 0.5s;
+    overflow-y: auto;
+}
+
+.container {
+    font-family: 'Red Rose';
+    background: #a9a9a9;
+    width: 300px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar h1 {
+    margin: 0;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-family: 'Red Rose';
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    background-color: #444;
+}
+
+.Center {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    position: relative;
+}
+
+h2 {
+    color: white;
+    font-family: 'Red Rose';
+    font-size: 50px;
+    grid-column: 2;
+    margin: 0;
+    text-align: center;
+}
+.a{
+text-decoration:none;
+}
+
+.post-button {
+    grid-column: 3;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 18px;
+    align-self: flex-end; /* Align the button to the right */
+    margin-right: 10%; /* Adjust spacing to position the button */
+    margin-top: -40px; /* Adjust vertical position if needed */
+}
+
+.post-button:hover {
+    background-color: #333;
+}
+
+.post-container {
+    padding: 15px;
+    width: 90%;
+    max-width: 600px;
+    color: white;
+    margin-top: 20px; /* Adds spacing below the title */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: relative;
+}
+
+.post-details {
+    text-align: left; /* Aligns post content to the left */
+}
+
+.post {
+    background-color: #3b3b3b; /* Background color for each post */
+    border: 1px solid #fda707; /* Optional border around the post */
+    border-radius: 4px; /* Rounded corners */
+    padding: 15px; /* Padding inside the post */
+    margin: 15px 0; /* Space between each post */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow for depth */
+    position: relative;
+    overflow: hidden; /* Hide anything overflowed from the container */
+    cursor: default;
+}
+
+/* Optional: Style to further separate the posts */
+.post + .post {
+    margin-top: 20px; /* Space between consecutive posts */
+}
+
+/* Adjust profile picture inside post header */
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #c7c7c7;
+    position: absolute;
+    top: -3px;
+    left: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling inside each post */
+.post-header {
+    position: relative;
+    padding-left: 70px; /* Add padding to the left to accommodate profile picture */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between title and expand/collapse arrow */
+}
+
+/* Title font style */
+.post-summary {
+    font-size: 18px;
+    color: rgb(252, 159, 38);
+    margin-left: 10px;
+    line-height: 1.5; /* Set line height for consistency */
+    min-height: 3em; /* Enforce at least two lines (1.5 line-height × 2 = 3em) */
+    display: block; /* Ensure block layout for multiline text */
+    overflow: hidden; /* Hide excess text if any */
+    white-space: pre-wrap; /* Preserve whitespace and allow line breaks */
+    word-wrap: break-word; /* Ensure long words break properly */
+}
+
+/* Expand/collapse arrow styling */
+.arrow {
+    bottom: -10px;
+    right: 10px;
+    font-size: 20px;
+    color: rgb(240, 240, 240);
+    cursor: pointer;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.expanded-arrow {
+    bottom: 10px; /* Position at the bottom-right of the expanded content */
+    right: 10px;
+    display: none; /* Hidden by default, shown when post expands */
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Expanded post content */
+.post-content {
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+/* Message button */
+.message-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.message-button:hover {
+    background-color: #333;
+}
+
+.post.expanded .post-content {
+    display: block;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.msg-button {
+    position: absolute; /* Position the button inside the container */
+    bottom: 10px; /* Adjust spacing from the bottom */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Center alignment correction */
+    padding: 10px 20px; /* Button padding */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Optional rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.msg-button:hover {
+    background-color: #3a3a3a; /* Darker shade on hover */
+}
+
+.message-button {
+    display: none; /* Initially hidden */
+    margin-top: 10px; /* Space above the button */
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Button text size */
+    background-color: #181818; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding in width */
+    text-align: center; /* Center the text */
+}
+
+.message-button:hover {
+    background-color: #585858; /* Darker background on hover */
+}

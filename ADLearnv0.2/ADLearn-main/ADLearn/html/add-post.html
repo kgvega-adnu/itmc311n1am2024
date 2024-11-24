@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/add_post.css">
+</head>
+
+
+<body>
+    <div class="navbar">
+        <a href="./homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="add-post-container">
+        <form id="add-post-form">
+            <textarea id="post-title" placeholder="Title" required></textarea>
+            <textarea id="post-content" placeholder="Put post here..." required></textarea>
+            <button type="submit" class="submit-button">Post</button>
+        </form>
+    </div>
+
+    <script>
+        // Extract the category from the referring page URL (the full URL path)
+        const referringPage = document.referrer;
+    
+        if (referringPage) {
+            // Extract the category from the full URL path
+            // Example: /html/Categories/c++.html -> c++
+            const pathParts = referringPage.split('/');
+            const categoryName = pathParts[pathParts.length - 1].split('.')[0]; // Extracts "c++" or "java"
+    
+            // Save the category name in localStorage
+            localStorage.setItem("currentCategory", categoryName);
+        } else {
+            alert("Unable to identify the category.");
+        }
+    
+        // Limit the post title to only two lines
+        document.getElementById('post-title').addEventListener('input', function () {
+            const lines = this.value.split('\n');
+    
+            // Prevent more than 2 lines
+            if (lines.length > 2) {
+                this.value = lines.slice(0, 2).join('\n'); // Keep only the first 2 lines
+            }
+        });
+    
+        document.getElementById("add-post-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            const title = document.getElementById("post-title").value;
+            const content = document.getElementById("post-content").value;
+    
+            if (title && content) {
+                const currentCategory = localStorage.getItem("currentCategory");
+    
+                if (!currentCategory) {
+                    alert("Category not specified. Unable to save the post.");
+                    return;
+                }
+    
+                // Save the post under the correct category in localStorage
+                let categoryPosts = JSON.parse(localStorage.getItem(currentCategory)) || [];
+                categoryPosts.push({ title, content });
+                localStorage.setItem(currentCategory, JSON.stringify(categoryPosts));
+    
+                // Redirect to the category page (e.g., java.html, c++.html, etc.)
+                window.location.href = `/html/Categories/${currentCategory}.html`;
+            } else {
+                alert("Please fill in both fields!");
+            }
+        });
+    </script>
+    
+    
+    
+</body>

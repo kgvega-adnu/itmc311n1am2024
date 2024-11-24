@@ -1,0 +1,253 @@
+body {
+    font-family: 'Red Rose';
+    background-color: #696969; 
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    margin: 0;
+    transition: opacity 0.5s;
+}
+
+.container {
+    font-family: 'Red Rose';
+    background: #a9a9a9;
+    width: 300px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    margin: auto;
+}
+
+.signup-container {
+    text-align: center;
+    font-family: 'Red Rose';
+    background: #a9a9a9;
+    padding: 30px;
+    border-radius: 16px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+}
+
+.navbar {
+    background-color: black; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px; 
+}
+
+.navbar h1 {
+    color: white; 
+    margin: 0; 
+}
+
+.navbar a {
+    color: white; 
+    text-decoration: none; 
+    margin-left: 20px; 
+    border-radius: 4px; 
+    padding: 5px 10px; 
+    font-family: 'Red Rose';
+}
+
+.navbar a:hover {
+    text-decoration: underline; 
+    background-color: #444; 
+}
+
+.h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Red Rose'; 
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    font-family: 'Red Rose';
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Red Rose';
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link p {
+    color: rgb(0, 0, 0);
+}
+
+.login-link a {
+    color: #ffffff; 
+    text-decoration: none;
+    font-family: 'Red Rose';
+}
+
+.login-link a:hover {
+    text-decoration: underline; 
+}
+
+.signup-btn {
+    background-color: #0b0b0b; 
+    color: white; 
+    font-size: 16px; 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  
+  .signup-btn:hover {
+    background-color: #333; 
+  }
+.signup-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signup-link p {
+    color: rgb(0, 0, 0);
+}
+
+.signup-link a {
+    color: #ffffff; 
+    text-decoration: none;
+    font-family: 'Red Rose';
+}
+
+.signup-link a:hover {
+    text-decoration: underline; 
+}
+
+@media (max-width: 600px) {
+    .signup-container {
+        width: 90%; 
+    }
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.links a {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    text-decoration: none;
+    font-family: 'Red Rose';
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.container_home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.left-section, .right-section {
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.left-section button, .right-section button {
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 250px;
+    padding: 20px 20px;
+}
+
+.left-section button:hover, .right-section button:hover {
+    background-color: #bbbbbb;
+}
+
+.separator {
+    width: 2px;
+    height: 600px;
+    background-color: #cccccc;
+    margin: 0 40px;
+}
+
+.programming {
+    background-color: #a8a8a8;
+}
+
+.right-section button {
+    margin-top: 0;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .separator {
+        display: none;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Fading transition */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
