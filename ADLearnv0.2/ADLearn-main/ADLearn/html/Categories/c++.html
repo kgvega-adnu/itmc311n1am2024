@@ -68,7 +68,10 @@
             postHeader.className = "post-header";
 
             const profilePic = document.createElement("div");
-            profilePic.className = "profile-pic";
+                    profilePic.className = "profile-pic";
+                    profilePic.addEventListener("click", () => {
+                        window.location.href = "/html/profile_check.html"; // Redirect to profile check page
+                    });
 
             const userDetails = document.createElement("div");
             userDetails.className = "post-summary";

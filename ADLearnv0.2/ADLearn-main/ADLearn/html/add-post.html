@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADLearn</title>
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/add_post.css">
-</head>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+    </script>
+</head>
 
 <body>
     <div class="navbar">
@@ -28,59 +47,52 @@
         </form>
     </div>
 
-    <script>
-        // Extract the category from the referring page URL (the full URL path)
+    <script src="categories.js">
+        // Extract the category from the referring page URL
         const referringPage = document.referrer;
-    
+
         if (referringPage) {
-            // Extract the category from the full URL path
-            // Example: /html/Categories/c++.html -> c++
             const pathParts = referringPage.split('/');
-            const categoryName = pathParts[pathParts.length - 1].split('.')[0]; // Extracts "c++" or "java"
-    
-            // Save the category name in localStorage
+            const categoryName = pathParts[pathParts.length - 1].split('.')[0]; // Extract category like "java" or "c++"
             localStorage.setItem("currentCategory", categoryName);
         } else {
             alert("Unable to identify the category.");
         }
-    
-        // Limit the post title to only two lines
-        document.getElementById('post-title').addEventListener('input', function () {
-            const lines = this.value.split('\n');
-    
-            // Prevent more than 2 lines
-            if (lines.length > 2) {
-                this.value = lines.slice(0, 2).join('\n'); // Keep only the first 2 lines
-            }
-        });
-    
-        document.getElementById("add-post-form").addEventListener("submit", function (e) {
+
+        document.getElementById("add-post-form").addEventListener("submit", async function (e) {
             e.preventDefault(); // Prevent default form submission
-    
+
             const title = document.getElementById("post-title").value;
             const content = document.getElementById("post-content").value;
-    
+
             if (title && content) {
                 const currentCategory = localStorage.getItem("currentCategory");
-    
+
                 if (!currentCategory) {
                     alert("Category not specified. Unable to save the post.");
                     return;
                 }
-    
-                // Save the post under the correct category in localStorage
-                let categoryPosts = JSON.parse(localStorage.getItem(currentCategory)) || [];
-                categoryPosts.push({ title, content });
-                localStorage.setItem(currentCategory, JSON.stringify(categoryPosts));
-    
-                // Redirect to the category page (e.g., java.html, c++.html, etc.)
-                window.location.href = `/html/Categories/${currentCategory}.html`;
+
+                try {
+                    // Add the new post to Firestore under the "posts" collection
+                    await db.collection('posts').add({
+                        title: title,
+                        content: content,
+                        category: currentCategory,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Redirect to the category page after posting
+                    window.location.href = `/html/Categories/${currentCategory}.html`;
+                } catch (error) {
+                    console.error("Error adding post: ", error);
+                    alert("Error saving post. Please try again.");
+                }
             } else {
                 alert("Please fill in both fields!");
             }
         });
     </script>
-    
-    
-    
+
 </body>
+</html>
