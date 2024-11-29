@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/profile_check.css">
+    <a href="homepage.html"><h1>ADLearn</h1></a>
+</head>
+<body>
+    <header class="navbar">
+        <a href="homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-message-container">
+            <div class="profile-box">
+                <div class="profile-circle"></div>
+                <div class="profile-name" id="profile-name">No Name</div>
+            </div>
+            <div class="message-box" id="profile-message" onclick="redirectToMessage()">
+                Message
+            </div>  
+        </div>
+        <div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Bio</strong></div>
+                <p id="profile-bio">No bio...</p>
+            </div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Academic Achievements</strong></div>
+                <ul id="profile-achievements">
+                    <li>No achievements...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadProfileData() {
+            const profileName = localStorage.getItem("profileName") || "Default Name";
+            const nameContainer = document.getElementById("profile-name");
+            nameContainer.textContent = profileName; // Display the name in the container
+
+
+            // Retrieve the bio and achievements data from localStorage
+            const bio = localStorage.getItem("profileBio");
+            const achievements = JSON.parse(localStorage.getItem("profileAchievements") || "[]");
+
+            // Set profile name
+            document.getElementById("profile-name").textContent = profileName;
+
+            // Set bio content
+            const bioElement = document.getElementById("profile-bio");
+            bioElement.textContent = bio || "No bio available.";
+
+            // Set academic achievements content
+            const achievementsContainer = document.getElementById("profile-achievements");
+            achievementsContainer.innerHTML = ""; // Clear previous achievements
+            if (achievements.length > 0) {
+                achievements.forEach((achievement) => {
+                    const li = document.createElement("li");
+                    li.textContent = achievement; // Add each achievement as a list item
+                    achievementsContainer.appendChild(li);
+                });
+            } else {
+                achievementsContainer.innerHTML = "<li>No achievements available.</li>";
+            }
+        }
+
+        function redirectToMessage() {
+        window.location.href = "msg.html"; // Redirects to the messaging page
+    }
+
+        // Call `loadProfileData` when the page loads
+        window.onload = loadProfileData;
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/add_post.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+    </script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="./homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="add-post-container">
+        <form id="add-post-form">
+            <textarea id="post-title" placeholder="Title" required></textarea>
+            <textarea id="post-content" placeholder="Put post here..." required></textarea>
+            <button type="submit" class="submit-button">Post</button>
+        </form>
+    </div>
+
+    <script src="categories.js">
+        // Extract the category from the referring page URL
+        const referringPage = document.referrer;
+
+        if (referringPage) {
+            const pathParts = referringPage.split('/');
+            const categoryName = pathParts[pathParts.length - 1].split('.')[0]; // Extract category like "java" or "c++"
+            localStorage.setItem("currentCategory", categoryName);
+        } else {
+            alert("Unable to identify the category.");
+        }
+
+        document.getElementById("add-post-form").addEventListener("submit", async function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const title = document.getElementById("post-title").value;
+            const content = document.getElementById("post-content").value;
+
+            if (title && content) {
+                const currentCategory = localStorage.getItem("currentCategory");
+
+                if (!currentCategory) {
+                    alert("Category not specified. Unable to save the post.");
+                    return;
+                }
+
+                try {
+                    // Add the new post to Firestore under the "posts" collection
+                    await db.collection('posts').add({
+                        title: title,
+                        content: content,
+                        category: currentCategory,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Redirect to the category page after posting
+                    window.location.href = `/html/Categories/${currentCategory}.html`;
+                } catch (error) {
+                    console.error("Error adding post: ", error);
+                    alert("Error saving post. Please try again.");
+                }
+            } else {
+                alert("Please fill in both fields!");
+            }
+        });
+    </script>
+
+</body>
+</html>

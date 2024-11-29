@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/profile_edit.css">
+    <script>
+        // Edit name
+        function editName() {
+            const nameContainer = document.getElementById("profile-name");
+            const nameInput = document.getElementById("name-input");
+            const editNameButton = document.querySelector(".edit-name-button");
+
+            if (nameInput.style.display === "none" || !nameInput.style.display) {
+                // Show input field for editing name
+                nameInput.value = nameContainer.innerHTML;
+                nameInput.style.display = "inline-block";
+                nameContainer.style.display = "none";
+                editNameButton.textContent = "Save";
+            } else {
+                // Save the name
+                const newName = nameInput.value.trim();
+                if (newName) {
+                    nameContainer.innerHTML = newName;
+                    nameInput.style.display = "none";
+                    nameContainer.style.display = "block";
+                    editNameButton.textContent = "Edit";
+                    localStorage.setItem("profileName", newName); // Save to localStorage
+                } else {
+                    alert("Name cannot be empty!");
+                }
+            }
+        }
+
+        // Edit bio
+        function editBio() {
+            const bioContainer = document.getElementById("bio-list");
+            const bioTextarea = document.getElementById("bio-textarea");
+            const editButton = document.querySelector(".edit-button");
+
+            if (bioTextarea.style.display === "none" || !bioTextarea.style.display) {
+                // Show textarea for editing
+                bioTextarea.value = bioContainer.children[0]?.innerHTML.replace(/<br\s*\/?>/g, "\n") || "";
+                bioTextarea.style.display = "block";
+                editButton.textContent = "Save";
+            } else {
+                // Save the bio
+                const bioText = bioTextarea.value.trim();
+                if (bioText) {
+                    bioContainer.innerHTML = `<li>${bioText.replace(/\n/g, "<br>")}</li>`;
+                    bioTextarea.style.display = "none";
+                    editButton.textContent = "Edit";
+                    localStorage.setItem("profileBio", bioText); // Save to localStorage
+                } else {
+                    alert("Bio cannot be empty!");
+                }
+            }
+        }
+
+        // Add new academic achievement
+        function editAchievements() {
+            const achievementText = prompt("Enter a new Academic Achievement:");
+            if (achievementText) {
+                const achievementContainer = document.getElementById("achievement-list");
+                const achievementItem = document.createElement("li");
+                achievementItem.textContent = achievementText;
+
+                // Add delete button
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function () {
+                    achievementContainer.removeChild(achievementItem);
+                    saveAchievements(); // Update localStorage
+                };
+
+                achievementItem.appendChild(deleteButton);
+                achievementContainer.appendChild(achievementItem);
+                saveAchievements(); // Save updated achievements
+            }
+        }
+
+        // Save all achievements to localStorage
+        function saveAchievements() {
+            const achievements = Array.from(document.querySelectorAll("#achievement-list li"))
+                .map((item) => item.textContent.replace("Delete", "").trim());
+            localStorage.setItem("profileAchievements", JSON.stringify(achievements));
+        }
+
+        // Load profile data on page load
+        function loadProfileData() {
+            const name = localStorage.getItem("profileName");
+            const bio = localStorage.getItem("profileBio");
+            const achievements = JSON.parse(localStorage.getItem("profileAchievements") || "[]");
+
+            // Populate name
+            if (name) {
+                const nameContainer = document.getElementById("profile-name");
+                nameContainer.innerHTML = name;
+            }
+
+            // Populate bio
+            if (bio) {
+                const bioContainer = document.getElementById("bio-list");
+                bioContainer.innerHTML = `<li>${bio.replace(/\n/g, "<br>")}</li>`;
+            }
+
+            // Populate achievements
+            const achievementContainer = document.getElementById("achievement-list");
+            achievements.forEach((achievement) => {
+                const achievementItem = document.createElement("li");
+                achievementItem.textContent = achievement;
+
+                // Add delete button
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function () {
+                    achievementContainer.removeChild(achievementItem);
+                    saveAchievements();
+                };
+
+                achievementItem.appendChild(deleteButton);
+                achievementContainer.appendChild(achievementItem);
+            });
+        }
+
+        // Load data when the page loads
+        window.onload = loadProfileData;
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <a href="homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="about.html">About Us</a>
+            <a href="/html/login.html">Logout</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile-message-container">
+            <div class="profile-box">
+                <div class="profile-circle"></div>
+                <!-- Profile name and Edit button -->
+                <div id="profile-name" class="profile-name">Name</div>
+                <input type="text" id="name-input" style="display: none;" />
+                <button class="edit-name-button" onclick="editName()">Edit</button>
+            </div>
+        </div>
+        <div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Bio</strong></div>
+                <ul id="bio-list"></ul>
+                <textarea id="bio-textarea" rows="5" placeholder="Write your bio here..." style="display: none; width: 100%;"></textarea>
+                <button class="edit-button" onclick="editBio()">Add</button>
+            </div>
+            <div class="additional-box">
+                <div class="bio-header"><strong>Academic Achievements</strong></div>
+                <ul id="achievement-list"></ul>
+                <button class="edit-button" onclick="editAchievements()">Add</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

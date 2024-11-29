@@ -1,0 +1,211 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    width: 100vw; 
+    transition: opacity 0.5s;
+}
+
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 10; 
+    box-sizing: border-box; 
+}
+
+.navbar h1 {
+    font-family: 'Red Rose';
+    color: white;
+    margin: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-family: 'Red Rose';
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    background-color: #444;
+}
+
+.container {
+    display: flex;
+    flex: 1; 
+    flex-direction: row; 
+    margin-top: 50px; 
+    width: 100%; 
+    background-color: #4d4d4d;
+    padding: 20px;
+    justify-content: center; 
+    gap: 300px; 
+    align-items: stretch; 
+    box-sizing: border-box; 
+}
+
+.profile-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; 
+    max-width: 300px; 
+    box-sizing: border-box;
+}
+
+.profile-box {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto; 
+    margin-bottom: 10px;
+}
+
+.profile-circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.edit-box {
+    background-color: black;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    width: 100%; 
+}
+
+.delete-button {
+    background-color: #232323;
+    color: white;
+    top: 10px; 
+    right: 10px;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #f0f0f0;
+}
+
+
+.additional-box {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 80px;
+    flex: 2; 
+    width: 100%; 
+    height: auto;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    position: relative;
+    min-height: 150px;
+    max-width: 600px;
+}
+
+.additional-box {
+    position: relative; /* Ensure child elements can be positioned relatively */
+    place-items: center;
+    min-width: 400px;
+    max-width: 800px; 
+    min-height: 200px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: normal; 
+
+}
+
+.bio-header {
+    position: absolute; /* Position relative to the container */
+    top: 10px; /* Adjust vertical position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure perfect centering */
+    font-weight: bold; /* Stronger font weight */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.achievement {
+    margin-left: 20px;
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #202020;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    max-width: 100%;
+    text-align: left; 
+    box-sizing: border-box; 
+}
+
+li {
+    display: flex; /* Keeps your existing flex properties */
+    align-items: center;
+    justify-content: center; /* Ensures text inside li is centered */
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    max-width: 100%; 
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}

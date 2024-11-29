@@ -1,0 +1,124 @@
+body {
+    background-color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: opacity 0.5s;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: black; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px; 
+    position: fixed; 
+    top: 0; 
+    width: 98%;
+
+}
+
+.navbar h1 {
+    font-family: 'Red Rose';
+    color: white; 
+    margin: 0; 
+}
+
+.navbar a {
+    color: white; 
+    text-decoration: none; 
+    margin-left: 20px; 
+    border-radius: 4px; 
+    padding: 5px 10px; 
+    font-family: 'Red Rose';
+}
+
+.navbar a:hover {
+    text-decoration: underline; 
+    background-color: #444; 
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-top: 60px; 
+}
+
+.left-column { 
+    color: white;
+    flex: 1; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+    margin-right: 80px;
+    margin-left: 10px;
+}
+
+.right-column {
+    background-color: #4d4d4d; 
+    color: white;
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    height: 100%;
+}
+
+.contact-title{
+    font-size: 30px;
+    font-family: 'Red Rose';
+
+}
+
+h2, h3, p {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Red Rose';
+}
+
+
+input[type="text"] {
+    width: 700px;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    font-family: 'Red Rose';
+    font-size: 20px;
+}
+
+input[type="report"] {
+    width: 700px;
+    max-width: 700px;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    font-family: 'Red Rose';
+    font-size: 15px;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 125px;
+    font-size: 16px;
+    font-family: 'Red Rose';
+    transition: background-color 0.3s ease;
+}

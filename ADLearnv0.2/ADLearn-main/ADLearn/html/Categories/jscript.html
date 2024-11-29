@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Category.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="../homepage.html"><h1>ADLearn</h1></a>
+        <div>
+            <a href="/html/profile_edit.html">Profile</a>
+            <a href="../about.html"> About Us</a>
+            <a href="../login.html"> Logout</a>
+        </div>
+    </div>
+
+    <div class="Center">
+        <h2>JavaScript</h2>
+        <a href="/html/add-post.html" style="text-decoration:none;" class="post-button">Post</a>
+        <div class="post-container" id="postList">
+            <div class="post">
+                <div class="post-details">
+                    <h3 class="post-title">Post Title</h3>
+                    <p class="post-content">This is the post content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function renderPosts() {
+    const postList = document.getElementById("postList");
+
+    const currentCategory = window.location.pathname.split('/').pop().split('.')[0]; 
+    // Fetch posts for the current category from localStorage
+    const posts = JSON.parse(localStorage.getItem(currentCategory)) || [];
+
+    postList.innerHTML = ""; // Clear existing posts
+
+    if (posts.length > 0) {
+        posts.forEach((post, index) => {
+            // Create post container
+            const postDiv = document.createElement("div");
+            postDiv.className = "post";
+
+            // Create delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.className = "delete-button";
+            deleteButton.textContent = "✖"; // Delete icon
+
+            // Add delete function
+            deleteButton.addEventListener("click", () => {
+                if (confirm("Are you sure you want to delete this post?")) {
+                    posts.splice(index, 1); 
+                    localStorage.setItem(currentCategory, JSON.stringify(posts)); // Update localStorage
+                    renderPosts(); 
+                }
+            });
+
+            // Create post header
+            const postHeader = document.createElement("div");
+            postHeader.className = "post-header";
+
+            const profilePic = document.createElement("div");
+            profilePic.className = "profile-pic";
+
+            const userDetails = document.createElement("div");
+            userDetails.className = "post-summary";
+
+            // Replace newline (\n) in the title with <br> for line breaks
+            const formattedTitle = post.title.replace(/\n/g, "<br>");
+            userDetails.innerHTML = formattedTitle; // Set formatted title
+
+            // Expand/collapse arrow
+            const arrow = document.createElement("div");
+            arrow.className = "arrow";
+            arrow.textContent = "▼"; // Default to collapsed state
+
+            // Expand/collapse function
+            arrow.addEventListener("click", () => {
+                const content = postDiv.querySelector(".post-content");
+                const msgButton = postDiv.querySelector(".message-button");
+                const isExpanded = content.style.display === "block";
+
+                // Toggle visibility of the content and message button
+                content.style.display = isExpanded ? "none" : "block";
+                msgButton.style.display = isExpanded ? "none" : "block";
+
+                // Update arrow text or rotation based on expanded state
+                arrow.textContent = isExpanded ? "▼" : "▲";
+            });
+
+            postHeader.appendChild(profilePic); 
+            postHeader.appendChild(userDetails); 
+            postHeader.appendChild(arrow);
+
+            // Create post content section
+            const postContent = document.createElement("div");
+            postContent.className = "post-content";
+            postContent.style.display = "none"; // Initially hidden
+            postContent.innerHTML = `<p>${post.content.replace(/\n/g, '<br>')}</p>`;
+
+            const msgButton = document.createElement("button");
+            msgButton.className = "message-button";
+            msgButton.textContent = "Message";
+            msgButton.style.display = "none"; 
+            msgButton.addEventListener("click", () => {
+                alert("Messaging functionality not implemented yet!"); // Placeholder 
+            });
+
+            postDiv.appendChild(deleteButton); 
+            postDiv.appendChild(postHeader);
+            postDiv.appendChild(postContent);
+            postDiv.appendChild(msgButton); 
+
+          
+            postList.appendChild(postDiv);
+        });
+    } else {
+        postList.innerHTML = "<p style='color: white; text-align: center; font-size: 20px;'>No posts available.</p>";
+    }
+}
+
+window.onload = renderPosts;
+</script>
+    
+</body>
+
+</html>

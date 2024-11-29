@@ -1,0 +1,117 @@
+body {
+    font-family: 'Red Rose';
+    background-color: #696969; 
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    margin: 0;
+}
+.navbar {
+    background-color: black; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px; 
+}
+.navbar h1 {
+    color: white; 
+    margin: 0; 
+    font-family: 'Red Rose'; 
+}
+.navbar a {
+    color: white; 
+    text-decoration: none; 
+    margin-left: 20px; 
+    border-radius: 4px; /* Add border-radius */
+    padding: 5px 10px; /* Add padding for better click area */
+    font-family: 'Red Rose'; 
+}
+.navbar a.language-link {
+    border: 2px solid white; 
+    border-radius: 4px; 
+    background-color: transparent; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+.navbar a.language-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: black; 
+}
+.navbar a:hover {
+    color: #ddd; 
+}
+h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Red Rose'; 
+}
+.info-box {
+    background-color: #696969;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 10px; 
+    width: 90%; 
+    max-width: 600px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white; 
+    position: relative; 
+    overflow: hidden; 
+    cursor: pointer; 
+}
+.togglebox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-pic {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    background-color: #ccc; 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.info-text {
+    margin-left: 70px;
+    margin-top: 10px;
+}
+.functions {
+    display:flex;
+    justify-content: center;
+    margin-top: 15px; 
+}
+.message-box {
+    background-color: black; 
+    color: white;
+    border-radius: 20px; 
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px; 
+    width: 80%;
+    max-width: 300px; 
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+    bottom: 15px;
+}
+.toggle-indicator {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc; 
+    position: absolute; 
+    bottom: 15px; 
+    right: 15px; 
+    transform: translateY(100%);
+}
+.status-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    color: white;
+}
